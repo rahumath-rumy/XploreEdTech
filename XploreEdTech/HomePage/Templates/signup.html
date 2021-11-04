@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width,1.0">
+    <title>Create Your Account</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+</head>
+<style>
+    .bg-img{
+        background-image:url("{% static 'images/gridbg.png' %}");
+        background-size: 1300px 600px;
+        line-height :15px;
+        background-size: cover;
+        background-position: left;
+    }
+
+</style>
+<body class="bg-img">
+
+<div class=signup>
+    <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
+
+    <h1> LETS’ <span style="color: #2C0C3D"> XPLORE </span>  AND MAKE TEACHING MORE  <span style="color: #2C0C3D">FUN!  </span>
+        <br>  <span style="color: #2C0C3D;"> REGISTER NOW! </span>
+        <br>
+        <br>
+        <button type="button" class="google-btn" >
+            Sign in with Google
+        </button>
+        <br>
+        <br>
+        OR </H1>
+        <br>
+
+        <form>
+            <input type="email" placeholder="EMAIL" required>
+            <span class="bar"></span>
+            <br>
+            <br>
+            <input type="password" placeholder="ENTER PASSWORD" required>
+            <span class="bar"></span>
+            <br>
+            <br>
+            <input type="password" placeholder="CONFIRM PASSWORD" required>
+            <span class="bar"></span>
+            <button type="submit" class="button" value="Submit">Sign Up</button>
+
+            <button onclick="window.location.href='home'" class="cancelbtn" value="cancel">CANCEL</button>
+
+
+        </form>
+
+</body>
+
+</html>
