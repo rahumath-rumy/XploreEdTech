@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+{% load socialaccount %}
 {% load static  %}
 <html lang="en">
 <head>
@@ -28,32 +29,43 @@
         <br>  <span style="color: #2C0C3D;"> REGISTER NOW! </span>
         <br>
         <br>
-        <button type="button" class="google-btn" >
-            Sign in with Google
-        </button>
+
+            <a href = "{%  provider_login_url 'google' %}" class="google-btn">  Sign in with Google </a>
+
         <br>
         <br>
         OR </H1>
         <br>
 
-        <form>
-            <input type="email" placeholder="EMAIL" required>
+        <form method="POST" action=" ">
+            {% csrf_token %}
+
+            <input type="text" placeholder="username" name="username" required>
             <span class="bar"></span>
             <br>
             <br>
-            <input type="password" placeholder="ENTER PASSWORD" required>
+            <input type="email" placeholder="EMAIL" name="email" required>
             <span class="bar"></span>
             <br>
             <br>
-            <input type="password" placeholder="CONFIRM PASSWORD" required>
+            <input type="password" placeholder="ENTER PASSWORD" name="password"required>
             <span class="bar"></span>
-            <button type="submit" class="button" value="Submit">Sign Up</button>
+            <br>
+            <br>
+            <input type="password" placeholder="CONFIRM PASSWORD" name="confirmpassword"required>
+            <span class="bar"></span>
 
-            <button onclick="window.location.href='home'" class="cancelbtn" value="cancel">CANCEL</button>
+            <button type=""submit class="cancelbtn" style="margin-left:135px;"> Sign Up</button>
 
-
+            <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
         </form>
-
+</div>
 </body>
 
 </html>
+
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = " ";
+    };
+</script>

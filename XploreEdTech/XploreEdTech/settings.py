@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from Tools.scripts import google
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -28,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 STATICFILES_DIR = [
-    "HomePage/static",
+    "HomePage/static"
 
 ]
 
@@ -42,7 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
+#AUTH_USER_MODEL = "accounts.User"   #changes the builtin user model acc to ours
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,10 +97,20 @@ WSGI_APPLICATION = 'XploreEdTech.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'djongo',
-        'NAME': 'myblogs',
+        'NAME': 'XploreEdTech',
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'social_core_backends.google.GoogleOAuth',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH_KEY ="938354405819-vhsuggam5t9o6eccti64g5ssjm4fgcgm.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH_SECRET ="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"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -132,4 +150,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'HomePage/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'HomePage/static')
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}

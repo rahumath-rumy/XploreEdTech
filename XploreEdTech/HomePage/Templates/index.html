@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<style>
+    .bg-img{
+        background-image: url({% static 'images/bgt.png' %});
+        background-size: 1450px 750px;
+        line-height :15px;
+    }
+</style>
+
 <body class="bg-img">
 
 <!--<h1>hey {{name}}</h1>
@@ -19,7 +27,7 @@
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
-    <a class="links" href="signup" >SignUp</a>
+    <a class="links" href="accounts" >SignUp</a>
     <a class="links" href="sample">Login</a>
     </div>
 </div>

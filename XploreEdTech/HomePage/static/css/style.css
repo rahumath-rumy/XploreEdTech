@@ -1,8 +1,4 @@
-.bg-img{
-  background-image: url("/static/images/bgt.png");
-  background-size: 1450px 750px;
-  line-height :15px;
-}
+
 
 .header {
   overflow: hidden;
@@ -31,7 +27,7 @@
   margin-right: 30px;
   font-size: 14px;
   line-height: 18px;
-  font-family: work sans;
+  font-family: Work sans;
   float: left;
   text-transform: uppercase;
 }
@@ -186,7 +182,7 @@ h1 {
     text-align:center;
     font-size:15px;
     font-weight:bold;
-    position: relstive;
+    position: relative;
     flex:40%;
 }
 

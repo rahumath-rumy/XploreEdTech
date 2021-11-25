@@ -3,6 +3,8 @@ from. import views
 
 urlpatterns = [
     #path("<int:home_id>/", views.techtool, name="techtool"),
-    path('home', views.home, name="Homepage"),
-    path('signup', views.signup, name="signup")
+    path('', views.home, name="Homepage"),
+    path('accounts', views.signup, name="accounts"),
+    path('profile', views.profile, name="profile")
+
 ]
