@@ -30,35 +30,45 @@
         <br>
         <br>
 
-            <a href = "{%  provider_login_url 'google' %}" class="google-btn">  Sign in with Google </a>
+        <a href = "{%  provider_login_url 'google' %}" class="google-btn">  Sign in with Google </a>
 
         <br>
         <br>
         OR </H1>
+    <br>
+
+    <form method="POST" action="profile">
+        {% csrf_token %}
+{#        {% for field in form %}#}
+{#            {{field.label}}#}
+{#            {{field}}#}
+{#        {% endfor %}#}
+
+       {{ form.username }}
+        <span class="bar"></span>
         <br>
+        <br>
+        {{ form.email}}
+        <span class="bar"></span>
+        <br>
+        <br>
+        {{ form.password1 }}
+        <span class="bar"></span>
+        <br>
+        <br>
+        {{ form.password2 }}
+        <span class="bar"></span>
 
-        <form method="POST" action=" ">
-            {% csrf_token %}
+        <button type=""submit class="submitbtn" style="margin-left:135px;"> Sign Up</button>
 
-            <input type="text" placeholder="username" name="username" required>
-            <span class="bar"></span>
-            <br>
-            <br>
-            <input type="email" placeholder="EMAIL" name="email" required>
-            <span class="bar"></span>
-            <br>
-            <br>
-            <input type="password" placeholder="ENTER PASSWORD" name="password"required>
-            <span class="bar"></span>
-            <br>
-            <br>
-            <input type="password" placeholder="CONFIRM PASSWORD" name="confirmpassword"required>
-            <span class="bar"></span>
+        <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
+        <br>
+        <br>
+        <br>
+        <h6> DONT’ HAVE AN ACCOUNT ? <a href="login"> SIGNUP </a> </h6>
+    </form>
+    {{form.error}}
 
-            <button type=""submit class="cancelbtn" style="margin-left:135px;"> Sign Up</button>
-
-            <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
-        </form>
 </div>
 </body>
 
@@ -68,4 +78,18 @@
     document.getElementById("myButton").onclick = function () {
         location.href = " ";
     };
+</script>
+
+<script>
+    //using vanilla javascript placholders are entered
+    const form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Email';
+    form_fields[3].placeholder = 'Password';
+    form_fields[4].placeholder = 'Confirm Password';
+
+    for (const field in form_fields){
+        form_fields[field].className += 'form-control'
+    }
+
 </script>
