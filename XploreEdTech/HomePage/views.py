@@ -11,6 +11,7 @@ def home(request):
     name = "Rahmath"
     return render(request, 'index.html', {'name': name})
 
+
 def signup(request):
 
     form = CreateUserForm()
@@ -19,8 +20,10 @@ def signup(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
+            #when commented data gets updated to the db
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created for' + user)
+            messages.success(request, 'Account has been created!')
+
             return redirect('profile')
 
     context = {'form': form}
@@ -45,9 +48,6 @@ def signup(request):
     #
     # else:
     #     return render(request, 'signup.html')
-    #
-    #
-
 
         #    username = request.POST['username']
     #    email = request.POST['email']
@@ -74,14 +74,25 @@ def signup(request):
 def profile(request):
     return render(request, 'profile.html')
 
-def login(request):
+def login_view(request):
+
     if request.method == 'POST':
-        request.POST.get ('username')
-        request.POST.get('password1')
+        username = request.POST.get('username')
+        password1 = request.POST.get('password')
+        user = authenticate(request, username=username, password=password1)
 
+        if user is not None:
+            login(request, user)
+            return redirect("profile")
+        else:
+            messages.info(request, "The username or password is incorrect")
     context = {}
-    return render(request, "login.html")
+    return render(request, 'login.html', context)
 
+
+
+def logoutuser(request):
+    return redirect('login')
 
 #def techtool(request, home_id):
    #return HttpResponse ("<h3> This page has all the tech tools </h3>")

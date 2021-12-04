@@ -22,7 +22,7 @@
     width: 150px;
     height: 95.74px;
     padding-top:30px;
-    padding-left:155px;
+    padding-left:165px;
 }
 
 h1{
@@ -196,6 +196,33 @@ form i {
     transition: 0.1s ease;
 }
 
+.alert {
+    padding: 20px;
+    background-color: #f44336;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+}
+
+.alert.success {background-color: #04AA6D;}
+.alert.info {background-color: #2196F3;}
+.alert.warning {background-color: #ff9800;}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
 
 @media screen and (max-width: 600px) {
     .logo{
