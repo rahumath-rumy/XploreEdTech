@@ -22,7 +22,7 @@ def signup(request):
             form.save()
             #when commented data gets updated to the db
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account has been created!')
+            messages.success(request, 'Account has been created!'+ user)
 
             return redirect('profile')
 
@@ -85,7 +85,7 @@ def login_view(request):
             login(request, user)
             return redirect("profile")
         else:
-            messages.info(request, "The username or password is incorrect")
+            messages.info(request, "The username or password entered is incorrect! Please try again!")
     context = {}
     return render(request, 'login.html', context)
 

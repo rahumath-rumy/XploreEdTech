@@ -1,5 +1,4 @@
 
-
 .header {
   overflow: hidden;
   background-color: transparent;
@@ -7,8 +6,8 @@
 }
 
 .header img {
-  height: 70px;
-  width : 100px;
+  height: 80px;
+  width : 120px;
 }
 
 /* Style the header links */
@@ -95,7 +94,7 @@ h1 {
 .topnav a.active {
     color: white;
     width: 70px;
-    height: 20px;
+    height: 15px;
     background: rgba(196, 196, 196, 0.3);
     mix-blend-mode: normal;
     border-radius: 100px;

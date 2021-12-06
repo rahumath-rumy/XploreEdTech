@@ -22,6 +22,8 @@
 </style>
 <body class="bg-img">
 
+{% include "msg.html" %}
+
 <div class=signup>
     <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
 
@@ -46,19 +48,17 @@
         <br>
         <input type="password" placeholder="password" name="password"required>
         <span class="bar"></span>
+
+        <br>
+        <H6 style="color:#BBBBBB; font-family: roboto; text-align: center; margin-top:8px;">  Forgot Password? </H6>
         <button type=""submit class="submitbtn" style="margin-left:135px;"> LOGIN  </button>
 
         <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
         <br>
         <br>
         <br>
-
         <h6> DON'T HAVE AN ACCOUNT ? <a href="accounts"> SIGNUP </a> </h6>
     </form>
-
-    {% for message in messages %}
-        <h5> {{message}} </h5>
-    {% endfor %}
 
 </div>
 </body>
@@ -75,12 +75,18 @@
     //using vanilla javascript placholders are entered
     const form_fields = document.getElementsByTagName('input')
     form_fields[1].placeholder = 'Username';
-    form_fields[2].placeholder = 'Email';
     form_fields[3].placeholder = 'Password';
-    form_fields[4].placeholder = 'Confirm Password';
 
     for (const field in form_fields){
         form_fields[field].className += 'form-control'
     }
 
+</script>
+
+<script>
+    setTimeout(function (){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    }, 2000)
 </script>
