@@ -5,8 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
-    <title>XploreEdTech</title>
+    <title>About Us</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,21 +22,18 @@
     }
 </style>
 
-<body class="bg-img">
-
-<!--<h1>hey {{name}}</h1>
-<p> this is my first python project</p> -->
+<body bgcolor="white">
 
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
-    <a class="links" href="accounts" >SignUp</a>
-    <a class="links" href="login">Login</a>
+        <a class="links" href="accounts" >SignUp</a>
+        <a class="links" href="login">Login</a>
     </div>
 </div>
 
 <div class="topnav" id="myTopnav">
-    <a href="#home" class="active">HOME</a>
+    <a href="http://127.0.0.1:8000/" >HOME</a>
     <div class="dropdown">
         <button class="dropbtn">SUBJECTS
             <i class="fa fa-caret-down"></i>
@@ -47,75 +46,78 @@
     </div>
     <a href="#commontools">COMMON TOOLS</a>
     <a href="#worksheets">WORKSHEETS</a>
-    <a href="about">ABOUT</a>
+    <a href="about" class="active">ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 
-<div class="container">
-    <div class="row" id="search">
-        <form id="search-form" action="" method="POST" enctype="multipart/form-data">
-            <div class="form-group col-xs-9">
-                <input class="form-control" type="text" placeholder="Search" />
+&nbsp
+&nbsp
+<div class="row">
+    <div class="column">
+        <div class="card">
+            <div class="container">
+                <h2>Our Aim</h2>
+                <p>Sorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ipsum magna, condimentum ut
+                    convallis ac, lacinia non arcu. Maecenas a ex at neque volutpat volutpat vitae vitae lectus.
+                    Phasellus dapibus ullamcorper nunc, quis ultrices ante. Sed sagittis ultricies est eu pharetra.
+                    Mauris eget justo aliquet, tristique sem eget, dapibus lorem. Nulla bibendum diam lacus,
+                    nec fringilla lectus rhoncus at. Vivamus commodo velit eget ex facilisis pellentesque.
+                    </p>
             </div>
-            <div class="form-group col-xs-3">
-                <button type="submit" class="btn btn-block btn-primary">Search</button>
-            </div>
-        </form>
+        </div>
     </div>
-    <div class="row" id="filter">
-        <form>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="make" class="filter-make filter form-control">
-                    <option value="">Select Make</option>
-                    <option value="">Show All</option>
-                </select>
+
+    <div class="column">
+        <div class="card">
+            <div class="container" id="zoomIn">
+                <img src = "{% static 'images/aims.png' %}" alt = "logo" class="image">
             </div>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="model" class="filter-model filter form-control">
-                    <option value="">Select Model</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="type" class="filter-type filter form-control">
-                    <option value="">Select Type</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="price" class="filter-price filter form-control">
-                    <option value="">Select Price Range</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-        </form>
+        </div>
     </div>
-    <div class="row" id="products">
 
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
-        hfakfa <br>
+    <div class="column">
+        <div class="card">
+            <div class="container" id="zoomIn">
+                <img src = "{% static 'images/whatwedo (2).png' %}" alt = "logo" class="image" style="margin:-60px 0 0 70px">
+            </div>
+        </div>
+    </div>
 
-
+    <div class="column">
+        <div class="card">
+            <div class="container">
+                <h2>What We Do</h2>
+                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+            </div>
+        </div>
     </div>
 </div>
+
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2>Donation Process</h2>
+                    <p>Sorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ipsum magna, condimentum ut
+                        convallis ac, lacinia non arcu. Maecenas a ex at neque volutpat volutpat vitae vitae lectus.
+                        Phasellus dapibus ullamcorper
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <div class="container" id="zoomIn">
+                    <img src = "{% static 'images/donation.png' %}" alt = "logo" class="image" style="margin-top:-60px">
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 
 
 <footer>
@@ -124,7 +126,7 @@
             <div class="first">
                 <div class="topic">LEARN MORE</div>
                 > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
-                    >  Donations <br></a>
+                >  Donations <br></a>
             </div>
         </div>
 
@@ -151,6 +153,7 @@
 
 
 
+
 <script>
     function myFunction() {
         let x = document.getElementById("myTopnav");
@@ -162,18 +165,14 @@
     }
 </script>
 
-
 <script>
     element = document.getElementById("chatbot");
 
     element.addEventListener("click", function(e) {
         e.preventDefault;
 
-        // -> removing the class
         element.classList.remove("bounce");
 
-        // -> triggering reflow /* The actual magic */
-        // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
         element.offsetWidth = element.offsetWidth;
 
         // -> and re-adding the class

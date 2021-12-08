@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import CreateUserForm
 from django.contrib import messages
+from .models import *
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
@@ -8,8 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def home(request):
-    name = "Rahmath"
-    return render(request, 'index.html', {'name': name})
+    # name = "Rahmath"
+    return render(request, 'index.html')
 
 
 def signup(request):
@@ -96,3 +97,7 @@ def logoutuser(request):
 
 #def techtool(request, home_id):
    #return HttpResponse ("<h3> This page has all the tech tools </h3>")
+
+def about(request):
+    return render(request, 'about.html')
+

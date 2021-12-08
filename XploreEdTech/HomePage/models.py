@@ -9,4 +9,5 @@ class RegUser (models.Model):
     def __str__(self):
         return str(self.email)
 
-
+# class Subjects (models.Model):
+#     subject = models.cCharField(max_length=50, null=True, unique=True)
