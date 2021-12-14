@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
+    <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <title>Login </title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
@@ -25,7 +26,9 @@
 {% include "msg.html" %}
 
 <div class=signup>
-    <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
+    <a href="http://127.0.0.1:8000/">
+        <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
+    </a>
 
     <h1> Hey There! </h1>
     <h1> Login to <span style="color: #2C0C3D"> XPLORE </span>  more  <span style="color: #2C0C3D"> EDTECH TOOLS!  </span>

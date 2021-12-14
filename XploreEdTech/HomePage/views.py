@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -14,7 +15,9 @@ def home(request):
 
 
 def signup(request):
-
+    # if request.user.is_authenticated:
+    #     return redirect('home')
+    # else:
     form = CreateUserForm()
 
     if request.method == 'POST':
@@ -71,9 +74,11 @@ def signup(request):
     #     return redirect('/')
     # else:
 
-
+@login_required(login_url='login')
 def profile(request):
-    return render(request, 'profile.html')
+    prof = Profile.objects.all()
+    return render(request, 'profile.html',
+                  {'prof': prof})
 
 def login_view(request):
 
@@ -90,10 +95,9 @@ def login_view(request):
     context = {}
     return render(request, 'login.html', context)
 
-
-
 def logoutuser(request):
-    return redirect('login')
+    logout(request)
+    return redirect('http://127.0.0.1:8000/')
 
 #def techtool(request, home_id):
    #return HttpResponse ("<h3> This page has all the tech tools </h3>")

@@ -12,7 +12,7 @@
 
 /* Style the header links */
 .header a.links {
-  width: 70px;
+  width: 90px;
   height: 40px;
   text-decoration:none;
   background: #2C0C3D;
@@ -20,7 +20,8 @@
   box-sizing: border-box;
   border-radius: 4px;
   color:white;
-  padding:8px;
+  padding-left:15px;
+    padding-top:8px;
   display:flex;
   text-align:center;
   margin-right: 30px;
@@ -169,26 +170,30 @@ h1 {
 }
 
 body{
-
-    /*background: linear-gradient(-45deg, #960055 0%, #AB2373 13%, #C04690 25%, #D56AAE 38%, #a86aa4  60%);;*/
-    /*background-size: 400% 400%;*/
-    animation: animate 9.5s ease-in-out infinite;
-
+    animation: animate 9.5s;
 }
+
 
 
 @keyframes animate{
-    0%{
-        background-position: 0 50%;
-    }
+
     50%{
-        background-position: 100% 50%;
+        background-position: 100%
     }
-    100%{
-        background-position: 0 50%;
-    }
+
 }
 
+.cet{
+    font-family: Work Sans;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    line-height: 59px;
+    letter-spacing: 0em;
+    text-align: center;
+    color:black;
+
+}
 
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
