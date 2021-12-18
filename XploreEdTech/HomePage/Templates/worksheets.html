@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+{% load static  %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width,1.0">
+    <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <title>Donate</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    .bg-img{
+        background-image: url({% static 'images/bgt.png' %});
+        background-size: 1450px 750px;
+        line-height :15px;
+    }
+</style>
+
+<body bgcolor="white">
+
+<div class="header">
+    <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
+    <div class="header-right">
+        <a class="links" href="accounts" >SignUp</a>
+        <a class="links" href="login">Login</a>
+    </div>
+</div>
+
+<div class="topnav" id="myTopnav">
+    <a href="http://127.0.0.1:8000/" >HOME</a>
+    <div class="dropdown">
+        <button class="dropbtn">SUBJECTS
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="#">Maths</a>
+            <a href="#">Science</a>
+            <a href="#">Computing</a>
+        </div>
+    </div>
+    <a href="#commontools">COMMON TOOLS</a>
+    <a href="worksheets"  class="active">WORKSHEET</a>
+    <a href="about">ABOUT </a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+{#{% for worksheet in Worksheet %}#}
+{#    {{ worksheet.subject }}#}
+{##}
+{#{% endfor %}#}
+
+</body>
+</html>

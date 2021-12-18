@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm
+from .forms import CreateUserForm, FileUpload
 from django.contrib import messages
 from .models import *
+from .models import Worksheets
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
-from django.contrib.auth.models import User, auth
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
+from .functions import handle_uploaded_file
 
 
 def home(request):
@@ -24,9 +24,9 @@ def signup(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            #when commented data gets updated to the db
+            # when commented data gets updated to the db
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account has been created!'+ user)
+            messages.success(request, 'Account has been created!' + user)
 
             return redirect('profile')
 
@@ -53,7 +53,7 @@ def signup(request):
     # else:
     #     return render(request, 'signup.html')
 
-        #    username = request.POST['username']
+    #    username = request.POST['username']
     #    email = request.POST['email']
     #     password = request.POST['password']
     #     confirmpassword = request.POST['confirmpassword']
@@ -74,14 +74,15 @@ def signup(request):
     #     return redirect('/')
     # else:
 
+
 @login_required(login_url='login')
 def profile(request):
     prof = Profile.objects.all()
     return render(request, 'profile.html',
                   {'prof': prof})
 
-def login_view(request):
 
+def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password1 = request.POST.get('password')
@@ -95,13 +96,36 @@ def login_view(request):
     context = {}
     return render(request, 'login.html', context)
 
+
 def logoutuser(request):
     logout(request)
     return redirect('http://127.0.0.1:8000/')
 
-#def techtool(request, home_id):
-   #return HttpResponse ("<h3> This page has all the tech tools </h3>")
+
+# def techtool(request, home_id):
+# return HttpResponse ("<h3> This page has all the tech tools </h3>")
 
 def about(request):
     return render(request, 'about.html')
 
+
+def donations(request):
+    return render(request, 'donations.html')
+
+
+def upload(request):
+    if request.method == 'POST':
+        uploads = FileUpload(request.POST, request.FILES)
+        if uploads.is_valid():
+            handle_uploaded_file(request.FILES['filepath'])
+            model_instance = uploads.save(commit=False)
+            model_instance.save()
+            return HttpResponse("Worksheets Uploaded")
+    else:
+        uploads = FileUpload()
+        return render(request, 'donations.html', {'form': uploads})
+
+
+def worksheet(request):
+    worksheetfiles = Worksheets.Object.all()
+    return render(request, 'worksheets.html', {'worksheet': worksheetfiles})
