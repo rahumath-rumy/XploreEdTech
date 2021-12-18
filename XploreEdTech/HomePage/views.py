@@ -1,3 +1,6 @@
+import os.path
+
+from django.conf import settings
 from django.shortcuts import render, redirect
 from .forms import CreateUserForm, FileUpload
 from django.contrib import messages
@@ -127,5 +130,16 @@ def upload(request):
 
 
 def worksheet(request):
-    worksheetfiles = Worksheets.Object.all()
-    return render(request, 'worksheets.html', {'worksheet': worksheetfiles})
+    worksheet_files = Worksheets.objects.all()
+    return render(request, 'worksheets.html', {'worksheet_files': worksheet_files})
+
+
+def download(request, path):
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(),
+                                    content_type="static/worksheet")
+            response['Content-Disposition'] = 'inline;filename=' + os.path.basename(file_path)
+            return response
+        raise Http404

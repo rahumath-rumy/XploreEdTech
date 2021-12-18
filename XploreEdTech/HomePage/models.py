@@ -39,7 +39,10 @@ class Worksheets(models.Model):
     grade_level = models.CharField(max_length=500)
     concept = models.CharField(max_length=500)
     email = models.CharField(max_length=50, null=True)
+    name = models.CharField(max_length=50, null=True)
+    school = models.CharField(max_length=50, null=True)
+    price = models.CharField(max_length=50, null=True)
     filepath = models.FileField(upload_to="worksheets/", null=True)
 
-    class Meta:
-        db_table = "Worksheets"
+    def __str__(self):
+        return self.subject + ' ' + self.concept

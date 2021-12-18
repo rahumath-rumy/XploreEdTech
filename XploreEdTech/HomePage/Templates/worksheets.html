@@ -53,10 +53,14 @@
     </a>
 </div>
 
-{#{% for worksheet in Worksheet %}#}
-{#    {{ worksheet.subject }}#}
-{##}
-{#{% endfor %}#}
+<div>
+    {% for wksheet in worksheet_files %}
+        {{ wksheet.subject }}
+        {{ wksheet.concept }}
+        {{ wksheet.grade_level }}
 
+        <a href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}">DOWNLOAD </a>
+    {% endfor %}
+</div>
 </body>
 </html>

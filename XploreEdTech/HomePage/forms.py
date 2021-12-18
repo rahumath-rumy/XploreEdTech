@@ -26,4 +26,4 @@ class CreateUserForm(UserCreationForm):
 class FileUpload(forms.ModelForm):
     class Meta:
         model = Worksheets
-        fields = ["subject", "grade_level", "concept", "email", "filepath"]
+        fields = ["subject", "grade_level", "concept", "email", "name","school", "price","filepath"]
