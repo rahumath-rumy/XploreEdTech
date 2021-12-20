@@ -71,13 +71,34 @@
                     by giving them the basic need? <br>
                     Well, click below and upload worksheets that you'll have and help educate a child!
                 </p>
-                    <a class="link" href="upload">Click here to upload!</a> <br> <br>
+                    <a class="link"  onclick="openForm()">Click here to upload!</a> <br> <br>
 
-{#                <h2 class = "abt-topic">File Uploader</h2>#}
+                <div class="form-popup" id="myForm" >
+                    <div class="form-container">
+                        <img src = "{% static 'images/submit icon.png' %}" alt = "confirmation" class="confirm"> </a>
+                        <p>By clicking <b>“Yes”</b> you agree that you have the permission of your institution to upload and/or
+                            you assure that the worksheet you will upload is of your own work and not the work of someone else.
+                            <br>
+                            In addition, you understand that <b>no income</b> will be incurred to you and all proceeds received
+                            through the purchase of your worksheets will be used for the needy students to
+                            help them in their education.</p>
+                        <a class="link1" href="upload">YES</a>
+                        <a class="cancel" onclick="closeForm()">NO</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
     <div class="column">
         <div class="card">
             <div class="container" id="zoomIn" style="padding-left:150px;">
@@ -87,51 +108,9 @@
     </div>
 </div>
 
-<div class="form-group">
-<form enctype="multipart/form-data" method="POST" class="post-form" >
-    {% csrf_token %}
-
-    <table>
-        <thead>
-        <tr>
-            <th scope="col">NAME</th>
-            <th scope="col">SCHOOL</th>
-            <th scope="col">EMAIL</th>
-            <th scope="col">SUBJECT</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{ form.name}}</td>
-            <td>{{ form.school}}</td>
-            <td>{{ form.email}}</td>
-            <td>{{ form.subject}}</td>
-        </tr>
-        <thead>
-        <tr>
-
-            <th scope="col">CONCEPT</th>
-            <th scope="col">GRADE-LEVEL</th>
-            <th scope="col">UPLOAD FILE</th>
-
-        </tr>
-        <tr>
-            <td>{{ form.concept}}</td>
-            <td>{{ form.grade_level}}</td>
-            <td style="padding-left:70px;">{{ form.filepath}}</td>
-            <td> <input type="image" id="image" alt="submit"
-                        src="{% static 'images/submit.png' %}"> </td>
-        </tr>
-        </thead>
-        </tbody>
-    </table>
-
-</form>
-</div>
-
 
 <div class="slideshow">
-    <h2 class="abt-topic" style="padding-left:70px;">A Little Goodness, Goes A Long Way!</h2>
+    <h2 class="abt-topic" style="padding-left:40px;">A Little Goodness, Goes A Long Way!</h2>
     <div class="fade">
         <img src="{% static 'images/sampledonation2.jpg' %}" >
         <div class="text">With the donation we received, we bought a school bag for a girl</div>

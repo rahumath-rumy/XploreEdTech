@@ -131,7 +131,7 @@ def upload(request):
             return HttpResponse("Worksheets Uploaded")
     else:
         uploads = FileUpload()
-        return render(request, 'upload.html', {'form': uploads})
+        return render(request, 'upload', {'form': uploads})
 
 
 def worksheet(request):

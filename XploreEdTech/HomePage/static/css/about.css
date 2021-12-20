@@ -218,7 +218,7 @@ table td {
 }
 
 .container a.link{
-    font-family: roboto, "Work Sans";
+    font-family: Roboto;
     width: 200px;
     height: 40px;
     text-decoration:none;
@@ -239,22 +239,88 @@ table td {
     text-transform: uppercase;
 }
 
-
-/*!* Create four equal columns that floats next to each other *!*/
-/*.column {*/
-/*    float: left;*/
-/*    width: 25%;*/
-/*    padding: 10px;*/
-/*    height: 300px; !* Should be removed. Only for demonstration *!*/
+/*pop up*/
+/* Button used to open the contact form - fixed at the bottom of the page */
+/*.open-button {*/
+/*    background-color: #555;*/
+/*    color: white;*/
+/*    padding: 16px 20px;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    opacity: 0.8;*/
+/*    position: fixed;*/
+/*    bottom: 23px;*/
+/*    right: 28px;*/
+/*    width: 280px;*/
 /*}*/
 
-/*!* Clear floats after the columns *!*/
-/*.row:after {*/
-/*    content: "";*/
-/*    display: table;*/
-/*    clear: both;*/
-/*}*/
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 2px solid #046404;
+    z-index: 9;
+}
 
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 15px;
+    background-color: white;
+}
+
+/*image*/
+.confirm{
+    padding-left:100px;
+    width: 25%;
+    height: auto;
+}
+
+/* Set a style for the submit/login button */
+.form-container .link1  {
+    width: 90px;
+    height: 40px;
+    text-decoration:none;
+    background: #046404;
+    box-sizing: border-box;
+    color:white;
+    padding-left:28px;
+    padding-top:12px;
+    display:flex;
+    text-align:center;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: roboto, "Work Sans";
+    text-transform: uppercase;
+    font-weight:900;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    width: 90px;
+    height: 40px;
+    text-decoration:none;
+    background: red;
+    box-sizing: border-box;
+    color:white;
+    padding-left:30px;
+    padding-top:12px;
+    display:flex;
+    text-align:center;
+    margin-bottom: 3px;
+    font-size: 14px;
+    line-height: 18px;
+    font-family: roboto, "Work Sans";
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+/* Add some hover effects to buttons */
+.form-container .link1:hover {
+    opacity: 1%;
+}
 @media screen and (max-width: 650px) {
     .column {
         width: 100%;
