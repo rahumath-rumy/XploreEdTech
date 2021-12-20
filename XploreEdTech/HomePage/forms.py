@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from django import forms
 
-from .models import Worksheets
+from .models import Worksheets, Profile
 
 
 class CreateUserForm(UserCreationForm):
@@ -23,7 +23,13 @@ class CreateUserForm(UserCreationForm):
 #         model = RegUser
 #         fields = "__all__"
 
+class Profile(forms.ModelForm):
+    class Meta:
+        model = Profile
+        # fields = ["profession", "grade_level",  "school", "subjects"]
+        fields = ["subjects"]
+
 class FileUpload(forms.ModelForm):
     class Meta:
         model = Worksheets
-        fields = ["subject", "grade_level", "concept", "email", "name","school", "price","filepath"]
+        fields = ["name", "school",  "email", "subject", "grade_level", "concept", "filepath"]

@@ -8,6 +8,7 @@
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <title>Your Dashboard</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/cart.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
 </head>
@@ -24,7 +25,43 @@
     <a href="#home" style="text-decoration: none; padding-left: 150px; font-size: 20px;"> EDUCATOR DASHBOARD  </a>
 </div>
 
-{#{{ prof }}#}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box-element">
+            <a  class="btn btn-outline-dark" href="{% url 'worksheet' %}">&#x2190; Continue Shopping</a>
 
+            <br>
+            <br>
+            <table class="table">
+                <tr>
+                    <th><h5>Items: <strong>3</strong></h5></th>
+                    <th><h5>Total:<strong> $42</strong></h5></th>
+                    <th>
+                        <a  style="float:right; margin:5px;" class="btn btn-success" href="checkout" >Checkout</a>
+                    </th>
+                </tr>
+            </table>
+
+        </div>
+
+        <br>
+        <div class="box-element">
+            <div class="cart-row">
+{#                <div style="flex:2"></div>#}
+                <div style="flex:2"><strong>Item</strong></div>
+                <div style="flex:1"><strong>Price</strong></div>
+                <div style="flex:1"><strong>Total</strong></div>
+            </div>
+
+            <div class="cart-row">
+{#                <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>#}
+                <div style="flex:2"><p>Product 1</p></div>
+                <div style="flex:1"><p>$20</p></div>
+                <div style="flex:1"><p>$32</p></div>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>

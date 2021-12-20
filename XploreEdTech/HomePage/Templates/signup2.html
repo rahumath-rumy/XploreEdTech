@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width,1.0">
+    <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <title>Lets Get Started</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+</head>
+<style>
+    .bg-img{
+        background-image:url("{% static 'images/gridd.png' %}");
+        background-size: 1300px 600px;
+        line-height :15px;
+        background-size: cover;
+        background-position: left;
+    }
+
+</style>
+<body class="bg-img">
+
+<div class=signup>
+    <a href="http://127.0.0.1:8000/">
+        <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
+    </a>
+
+    <h1 style="color: #2C0C3D; font-size: 30px;"> LETS' GET STARTED  </H1>
+    <br>
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+
+
+        {% for user in form %}
+            {{ user.email}}
+
+
+        {% endfor %}
+        <button type=""submit class="submitbtn" style="margin-left:135px;"> Hit It!</button>
+
+        <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
+
+    </form>
+
+    {{form.errors}}
+
+</div>
+
+</body>
+
+</html>
+
+<script type="text/javascript">
+    document.getElementById("myButton").onclick = function () {
+        location.href = " ";
+    };
+</script>
+
+<script>
+    //using vanilla javascript placholders are entered
+    const form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Email';
+    form_fields[3].placeholder = 'Password';
+    form_fields[4].placeholder = 'Confirm Password';
+
+    for (const field in form_fields){
+        form_fields[field].className += 'form-control'
+    }
+
+</script>

@@ -29,8 +29,11 @@
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
+{#        <img src="https://img.icons8.com/fluency/96/000000/book-shelf.png"/> cart#}
         {% if user.is_authenticated %}
+            <a class="links" href="profile">Profile</a>
             <a class="links" href="{%  url 'logout' %}">LogOut</a>
+
         {% else %}
             <a class="links" href="accounts" >SignUp</a>
             <a class="links" href="login">Login</a>
@@ -52,7 +55,7 @@
         </div>
     </div>
     <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets">WORKSHEETS</a>
+    <a href="worksheet">WORKSHEETS</a>
     <a href="about">ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -103,9 +106,9 @@
     <div class="content">
         <div class="left box">
             <div class="first">
-                <div class="topic">LEARN MORE</div>
+                <div class="topic">LEARN MORE</div> <br>
                 > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
-                    >  Donations <br></a>
+                > <a href="donations" style="padding-left:10px; color:white;  text-decoration: none;">  Donations <br> </a>
             </div>
         </div>
 
@@ -129,6 +132,7 @@
     </div>
 
 </footer>
+
 
 
 

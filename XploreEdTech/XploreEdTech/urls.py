@@ -30,8 +30,11 @@ urlpatterns = [
                   path('login/', include("HomePage.urls")),
                   path('about/', include("HomePage.urls")),
                   path('donations', include("HomePage.urls")),
+                  path('checkout', include("HomePage.urls")),
                   path('upload', include("HomePage.urls")),
                   path('worksheet', include("HomePage.urls")),
+                  path('getstarted', include("HomePage.urls")),
+
                   # path('logout', include("django.contrib.auth.urls")),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

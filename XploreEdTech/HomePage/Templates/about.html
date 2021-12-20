@@ -23,13 +23,14 @@
     {#}#}
 </style>
 
-<body bgcolor="white">
-
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
+        {#        <img src="https://img.icons8.com/fluency/96/000000/book-shelf.png"/> cart#}
         {% if user.is_authenticated %}
+            <a class="links" href="profile">Profile</a>
             <a class="links" href="{%  url 'logout' %}">LogOut</a>
+
         {% else %}
             <a class="links" href="accounts" >SignUp</a>
             <a class="links" href="login">Login</a>
@@ -37,8 +38,9 @@
 
     </div>
 </div>
+
 <div class="topnav" id="myTopnav">
-    <a href="http://127.0.0.1:8000/" >HOME</a>
+    <a href="#home" >HOME</a>
     <div class="dropdown">
         <button class="dropbtn">SUBJECTS
             <i class="fa fa-caret-down"></i>
@@ -50,7 +52,7 @@
         </div>
     </div>
     <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets">WORKSHEETS</a>
+    <a href="worksheet">WORKSHEETS</a>
     <a href="about" class="active">ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -104,7 +106,7 @@
         <div class="column">
             <div class="card">
                 <div class="container">
-                    <h2 class="abt-topic">Donation Process</h2>
+                    <h2><a href ="donations" class="abt-topic" style="text-decoration: none">Donation Process </a></h2>
                     <p>Sorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ipsum magna, condimentum ut
                         convallis ac, lacinia non arcu. Maecenas a ex at neque volutpat volutpat vitae vitae lectus.
                         Phasellus dapibus ullamcorper

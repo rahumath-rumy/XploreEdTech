@@ -1,8 +1,7 @@
 import os.path
-
 from django.conf import settings
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, FileUpload
+from .forms import CreateUserForm, FileUpload, Profile
 from django.contrib import messages
 from .models import *
 from .models import Worksheets
@@ -27,14 +26,16 @@ def signup(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            # when commented data gets updated to the db
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account has been created!' + user)
+            messages.success(request, 'Welcome ' + user + ' your account has been created!')
 
-            return redirect('profile')
+            return redirect('getstarted')
 
-    context = {'form': form}
+    user_details = User.objects.all()
+    context = {'form': user_details}
     return render(request, 'signup.html', context)
+
+
 
     #     reg = RegUser()
     #
@@ -77,12 +78,16 @@ def signup(request):
     #     return redirect('/')
     # else:
 
+def getstarted(request):
+    return render(request, 'signup2.html')
 
-@login_required(login_url='login')
+def checkout(request):
+    return render(request, 'checkout.html')
+
+# @login_required(login_url='login')
 def profile(request):
-    prof = Profile.objects.all()
-    return render(request, 'profile.html',
-                  {'prof': prof})
+    #prof = Profile()
+    return render(request, 'profile.html')
 
 
 def login_view(request):
@@ -126,7 +131,7 @@ def upload(request):
             return HttpResponse("Worksheets Uploaded")
     else:
         uploads = FileUpload()
-        return render(request, 'donations.html', {'form': uploads})
+        return render(request, 'upload.html', {'form': uploads})
 
 
 def worksheet(request):

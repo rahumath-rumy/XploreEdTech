@@ -17,7 +17,7 @@ from django.contrib.auth.models import AbstractUser, User
 
 class Profile(models.Model):
     profileid = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
-    User = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
+    User = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile', null=True)
     profession = models.CharField(max_length=50)
     school = models.CharField(max_length=50)
     grade_level = models.CharField(max_length=50)
@@ -25,8 +25,13 @@ class Profile(models.Model):
     # email = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
     profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
 
+    #
+    # def __str__(self):
+    #     return str(self.User)
+
     def __str__(self):
-        return str(self.User)
+        return self.subjects
+
 
 
 # class Subjects (models.Model):

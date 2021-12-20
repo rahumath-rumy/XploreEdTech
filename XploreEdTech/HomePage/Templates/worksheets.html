@@ -28,8 +28,14 @@
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
-        <a class="links" href="accounts" >SignUp</a>
-        <a class="links" href="login">Login</a>
+        {% if user.is_authenticated %}
+            <a class="links" href="profile">Profile</a>
+            <a class="links" href="{%  url 'logout' %}">LogOut</a>
+
+        {% else %}
+            <a class="links" href="accounts" >SignUp</a>
+            <a class="links" href="login">Login</a>
+        {% endif %}
     </div>
 </div>
 
@@ -52,15 +58,55 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
+<div class="gallery">
+            {% for wksheet in worksheet_files %}
 
-<div>
-    {% for wksheet in worksheet_files %}
-        {{ wksheet.subject }}
-        {{ wksheet.concept }}
-        {{ wksheet.grade_level }}
+                    <div class="tile">
+                        <div class="post">
+                <strong>{{ wksheet.subject }}  </strong> <br> <br>
+                <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
+                    Concept: {{ wksheet.concept }}  <br>
+                    Grade Level :  {{ wksheet.grade_level }} <br>
+                    Contributed By : {{ wksheet.name }} <br>
+                    School : {{ wksheet.school }} <br>
+                    LKR {{ wksheet.price }}  <br> <br>
+                    <a class="buy" href="">Buy Now</a>
+                <br>
+                </div>
+                     </div>
 
-        <a href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}">DOWNLOAD </a>
-    {% endfor %}
+            {% endfor %}
 </div>
 </body>
+
+<footer>
+    <div class="content">
+        <div class="left box">
+            <div class="first">
+                <div class="topic">LEARN MORE</div>
+                > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
+                >  Donations <br></a>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="topic" style="padding-left:20px;">CONNECT WITH US ON</div> <br>
+            <ul>
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="third">
+            <img src="{% static 'images/chatbot (1).png' %}" alt = "chatbot" id="chatbot">
+        </div>
+
+        <div class="bottom">
+            All Rights Reserved. Designed and Developed by Rahumath Rumy
+        </div>
+    </div>
+
+</footer>
 </html>
