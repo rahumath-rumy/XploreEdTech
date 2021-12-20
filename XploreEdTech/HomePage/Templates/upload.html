@@ -129,60 +129,6 @@
 </form>
 
 
-    <div class="slideshow">
-        <h2 class="abt-topic" style="padding-left:40px;">A Little Goodness, Goes A Long Way!</h2>
-        <div class="fade">
-            <img src="{% static 'images/sampledonation2.jpg' %}" >
-            <div class="text">With the donation we received, we bought a school bag for a girl</div>
-        </div>
-
-        <div class="fade">
-            <img src="{% static 'images/sampledonation1.jpg' %}" >
-            <div class="text">With the donation we received, we bought educational resource for a school.</div>
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-        <div style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-        </div>
-
-    </div>
-    <br>
-
-    <script>
-        var slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
-        function showSlides(n) {
-            var i;
-            var slides = document.getElementsByClassName("fade");
-            var dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-        }
-    </script>
-
-    </div>
-
     <footer>
         <div class="content">
             <div class="left box">

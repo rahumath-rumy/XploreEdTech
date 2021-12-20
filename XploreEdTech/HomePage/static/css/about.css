@@ -290,6 +290,7 @@ table td {
     display:flex;
     text-align:center;
     margin-bottom: 3px;
+    margin-left:100px;
     font-size: 14px;
     line-height: 18px;
     font-family: roboto, "Work Sans";
@@ -297,29 +298,9 @@ table td {
     font-weight:900;
 }
 
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-    width: 90px;
-    height: 40px;
-    text-decoration:none;
-    background: red;
-    box-sizing: border-box;
-    color:white;
-    padding-left:30px;
-    padding-top:12px;
-    display:flex;
-    text-align:center;
-    margin-bottom: 3px;
-    font-size: 14px;
-    line-height: 18px;
-    font-family: roboto, "Work Sans";
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
 /* Add some hover effects to buttons */
-.form-container .link1:hover {
-    opacity: 1%;
+.form-container .link1:hover img:hover {
+    opacity: 0.5;
 }
 @media screen and (max-width: 650px) {
     .column {

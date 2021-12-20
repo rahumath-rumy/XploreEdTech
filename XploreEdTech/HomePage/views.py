@@ -1,7 +1,7 @@
 import os.path
 from django.conf import settings
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, FileUpload, Profile
+from .forms import CreateUserForm, FileUpload, Profile, UserCreationForm
 from django.contrib import messages
 from .models import *
 from .models import Worksheets
@@ -17,22 +17,17 @@ def home(request):
 
 
 def signup(request):
-    # if request.user.is_authenticated:
-    #     return redirect('home')
-    # else:
     form = CreateUserForm()
-
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, 'Welcome ' + user + ' your account has been created!')
-
             return redirect('getstarted')
 
-    user_details = User.objects.all()
-    context = {'form': user_details}
+    # user_details = User.objects.all()
+    context = {'form': form}
     return render(request, 'signup.html', context)
 
 
@@ -148,3 +143,6 @@ def download(request, path):
             response['Content-Disposition'] = 'inline;filename=' + os.path.basename(file_path)
             return response
         raise Http404
+
+def register(request):
+    return render(request, "register.html")

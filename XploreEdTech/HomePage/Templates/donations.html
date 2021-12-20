@@ -75,15 +75,21 @@
 
                 <div class="form-popup" id="myForm" >
                     <div class="form-container">
+                        <img src="https://img.icons8.com/fluency/28/000000/close-window.png"  onclick="closeForm()"
+                        style="margin-left:280px;">
                         <img src = "{% static 'images/submit icon.png' %}" alt = "confirmation" class="confirm"> </a>
+
                         <p>By clicking <b>“Yes”</b> you agree that you have the permission of your institution to upload and/or
                             you assure that the worksheet you will upload is of your own work and not the work of someone else.
                             <br>
                             In addition, you understand that <b>no income</b> will be incurred to you and all proceeds received
                             through the purchase of your worksheets will be used for the needy students to
-                            help them in their education.</p>
+                            help them in their education.
+                        </p>
+
                         <a class="link1" href="upload">YES</a>
-                        <a class="cancel" onclick="closeForm()">NO</a>
+{#                        <a class="cancel" onclick="closeForm()">NO</a>#}
+
                     </div>
                 </div>
             </div>

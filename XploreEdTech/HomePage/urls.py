@@ -16,4 +16,5 @@ urlpatterns = [
     path('upload', views.upload, name="upload"),
     path('worksheet', views.worksheet, name="worksheet"),
     path('checkout', views.checkout, name="checkout"),
+    path('register', views.register, name="register"),
 ]

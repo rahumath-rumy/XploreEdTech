@@ -13,7 +13,7 @@
 </head>
 <style>
     .bg-img{
-        background-image:url("{% static 'images/gridd.png' %}");
+        background-image:url("{% static 'images/bg.image.png' %}");
         background-size: 1300px 600px;
         line-height :15px;
         background-size: cover;
@@ -42,7 +42,6 @@
 
     <form method="POST" action="">
         {% csrf_token %}
-
        {{ form.username }}
         <span class="bar"></span>
         <br>

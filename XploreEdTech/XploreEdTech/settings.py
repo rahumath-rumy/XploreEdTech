@@ -164,8 +164,11 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+
+LOGIN_REDIRECT_URL = 'profile'
+ACCOUNT_LOGOUT_REDIRECT = 'profile'
 
 # MEDIA_URL = '/images/'
 # MEDIA_ROOT = 'media/'

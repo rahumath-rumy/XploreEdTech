@@ -29,6 +29,7 @@ urlpatterns = [
                   path('profile/', include("HomePage.urls")),
                   path('login/', include("HomePage.urls")),
                   path('about/', include("HomePage.urls")),
+                  path('register', include("HomePage.urls")),
                   path('donations', include("HomePage.urls")),
                   path('checkout', include("HomePage.urls")),
                   path('upload', include("HomePage.urls")),
