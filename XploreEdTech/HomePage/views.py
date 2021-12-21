@@ -9,6 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .functions import handle_uploaded_file
+from django.contrib.auth.models import User
 
 
 def home(request):
@@ -17,6 +18,7 @@ def home(request):
 
 
 def signup(request):
+    #main one
     form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -26,9 +28,11 @@ def signup(request):
             messages.success(request, 'Welcome ' + user + ' your account has been created!')
             return redirect('getstarted')
 
-    # user_details = User.objects.all()
+    form = User.objects.all()
     context = {'form': form}
     return render(request, 'signup.html', context)
+
+#till here
 
 
 
@@ -74,7 +78,22 @@ def signup(request):
     # else:
 
 def getstarted(request):
-    return render(request, 'signup2.html')
+    if request.method=='POST':
+        prof = request.POST['prof']
+        sub = request.POST["sub"]
+        gl = request.POST["gl"]
+
+        user = User.objects.create_user(prof, sub, gl)
+        # user.profession = prof
+        # user.subjects = sub
+        user.save()
+
+        reg = profile(user=user, profession=prof, subjects=sub, grade_level=gl)
+        reg.save()
+        return HttpResponse("SUCCESS")
+
+    return render(request, 'signup.html')
+
 
 def checkout(request):
     return render(request, 'checkout.html')
@@ -82,7 +101,23 @@ def checkout(request):
 # @login_required(login_url='login')
 def profile(request):
     #prof = Profile()
-    return render(request, 'profile.html')
+    #return render(request, 'profile.html')
+
+    # form = Profile()
+    # if request.method == 'POST':
+    #     form = Profile(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         # user = form.cleaned_data.get('username')
+    #         messages.success(request, 'Welcome ' + user + ' your account has been created!')
+    #         return redirect('profile')
+    #
+    # # user_details = User.objects.all()
+    # context = {'form': form}
+    # return render(request, 'signup.html', context)
+
+    prof = User.objects.all()
+    return render(request, 'profile.html', {'User': prof})
 
 
 def login_view(request):
@@ -144,5 +179,3 @@ def download(request, path):
             return response
         raise Http404
 
-def register(request):
-    return render(request, "register.html")

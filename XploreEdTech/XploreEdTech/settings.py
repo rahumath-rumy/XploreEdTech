@@ -29,6 +29,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 STATICFILES_DIR = [
     "HomePage/static"
 ]
@@ -176,3 +179,5 @@ ACCOUNT_LOGOUT_REDIRECT = 'profile'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

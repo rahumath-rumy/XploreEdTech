@@ -10,13 +10,6 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-
-# class UserEditProfile (UserChangeForm):
-#     class Meta:
-#         model = User
-#         fields = ['username', 'email', 'password1', 'password2']
-
-
 # class RegUser(ModelForm):
 #     class Meta:
 #         model = RegUser

@@ -32,36 +32,85 @@
 
             <br>
             <br>
-            <table class="table">
-                <tr>
-                    <th><h5>Items: <strong>3</strong></h5></th>
-                    <th><h5>Total:<strong> $42</strong></h5></th>
-                    <th>
-                        <a  style="float:right; margin:5px;" class="btn btn-success" href="checkout" >Checkout</a>
-                    </th>
-                </tr>
-            </table>
-
-        </div>
-
-        <br>
-        <div class="box-element">
-            <div class="cart-row">
+{#            <table class="table">#}
+{#                <tr>#}
+{#                    <th><h5>Items: <strong>3</strong></h5></th>#}
+{#                    <th><h5>Total:<strong> $42</strong></h5></th>#}
+{#                    <th>#}
+{#                        <a  style="float:right; margin:5px;" class="btn btn-success" href="checkout" >Checkout</a>#}
+{#                    </th>#}
+{#                </tr>#}
+{#            </table>#}
+{##}
+{#        </div>#}
+{##}
+{#        <br>#}
+{#        <div class="box-element">#}
+{#            <div class="cart-row">#}
 {#                <div style="flex:2"></div>#}
-                <div style="flex:2"><strong>Item</strong></div>
-                <div style="flex:1"><strong>Price</strong></div>
-                <div style="flex:1"><strong>Total</strong></div>
-            </div>
-
-            <div class="cart-row">
+{#                <div style="flex:2"><strong>Item</strong></div>#}
+{#                <div style="flex:1"><strong>Price</strong></div>#}
+{#                <div style="flex:1"><strong>Total</strong></div>#}
+{#            </div>#}
+{##}
+{#            <div class="cart-row">#}
 {#                <div style="flex:2"><img class="row-image" src="{% static 'images/placeholder.png' %}"></div>#}
-                <div style="flex:2"><p>Product 1</p></div>
-                <div style="flex:1"><p>$20</p></div>
-                <div style="flex:1"><p>$32</p></div>
-            </div>
+{#                <div style="flex:2"><p>Product 1</p></div>#}
+{#                <div style="flex:1"><p>$20</p></div>#}
+{#                <div style="flex:1"><p>$32</p></div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{#    </div>#}
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ prof.username }}
+{#                <span class="bar"></span>#}
+                <br>
+                <br>
+                <input type="text" value ="{{ form.email }}">
+                {{ form.email}}
+                <span class="bar"></span>
+                <br>
+                <br>
+                {{ form.password1 }}
+                <span class="bar"></span>
+                <br>
+                <br>
+                {{ form.password2 }}
+                <span class="bar"></span>
 
-        </div>
+                {{ prof.subject }}
+                <span class="bar"></span>
+
+                <button type=""submit class="submitbtn" style="margin-left:135px;"> Sign Up</button>
+
+                <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
+            </form>
+
+            {{form.errors}}
+</div>
     </div>
 </div>
+
+<div>
+    <a href ="password_change/"> change password? </a>
+</div>
 </body>
+
+<script>
+    //using vanilla javascript placholders are entered
+    const form_fields = document.getElementsByTagName('input')
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Email';
+    form_fields[3].placeholder = 'Password';
+    form_fields[4].placeholder = 'Confirm Password';
+    form_fields[5].placeholder = 'Confirm Password';
+
+    for (const field in form_fields){
+        form_fields[field].className += 'form-control'
+    }
+
+</script>
+
 </html>

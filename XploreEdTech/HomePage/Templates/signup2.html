@@ -1,18 +1,19 @@
 <!DOCTYPE HTML>
+{% load socialaccount %}
 {% load static  %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <title>Lets Get Started</title>
+    <title>Create Your Account</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style2.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
 </head>
 <style>
     .bg-img{
-        background-image:url("{% static 'images/gridd.png' %}");
+        background-image:url("{% static 'images/bg.image.png' %}");
         background-size: 1300px 600px;
         line-height :15px;
         background-size: cover;
@@ -27,19 +28,36 @@
         <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
     </a>
 
-    <h1 style="color: #2C0C3D; font-size: 30px;"> LETS' GET STARTED  </H1>
+    <h1> LETS’ <span style="color: #2C0C3D"> XPLORE </span>  AND MAKE TEACHING MORE  <span style="color: #2C0C3D">FUN!  </span>
+        <br>  <span style="color: #2C0C3D;"> REGISTER NOW! </span>
+        <br>
+        <br>
+
+        <a href = "{%  provider_login_url 'google' %}" class="google-btn">  Sign in with Google </a>
+
+        <br>
+        <br>
+        OR </H1>
     <br>
 
-    <form action="" method="POST" >
-        {% csrf_token %}
+    <form method="POST" action="">
+
+<div class="form-group">
+    {% csrf_token %}
+    <input type="text" class="form-control" placeholder="Profession" name="prof">
+    <br>
+    <input type="text" class="form-control" placeholder="subject" name="sub">
+    <br>
+    Grade - Level
+    <select name="gl" class="form-control">
+        <option>toddler</option>
+        <option>nursery</option>
+        <option>reception</option>
+    </select>
 
 
-        {% for user in form %}
-            {{ user.email}}
-
-
-        {% endfor %}
-        <button type=""submit class="submitbtn" style="margin-left:135px;"> Hit It!</button>
+</div>
+        <button type=""submit class="submitbtn" style="margin-left:135px;"> Sign Up</button>
 
         <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
 
@@ -59,16 +77,4 @@
     };
 </script>
 
-<script>
-    //using vanilla javascript placholders are entered
-    const form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = 'Username';
-    form_fields[2].placeholder = 'Email';
-    form_fields[3].placeholder = 'Password';
-    form_fields[4].placeholder = 'Confirm Password';
-
-    for (const field in form_fields){
-        form_fields[field].className += 'form-control'
-    }
-
-</script>
+>
