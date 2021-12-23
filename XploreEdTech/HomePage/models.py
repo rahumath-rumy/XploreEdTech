@@ -1,10 +1,7 @@
 from django.db import models
 import uuid
-from django.contrib.auth.models import AbstractUser, User
+from django.contrib.auth.models import User
 
-
-# class User(AbstractUser):
-#     pass
 
 # class RegUser (models.Model):
 #     username = models.CharField(max_length=50, null=True, unique=True)
@@ -15,23 +12,20 @@ from django.contrib.auth.models import AbstractUser, User
 #     def __str__(self):
 #         return str(self.email)
 
-class Profile(models.Model):
-    # profileid = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile', null=True)
-    profession = models.CharField(max_length=50)
-    school = models.CharField(max_length=50)
-    grade_level = models.CharField(max_length=50)
-    subjects = models.CharField(max_length=50)
+class register_table(models.Model):
+    #profileid = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    school = models.CharField(max_length=50, null=True, blank=True)
+    grade_level = models.CharField(max_length=50, null=True, blank=True)
+    profession = models.CharField(max_length=50, null=True, blank=True)
+    subjects = models.CharField(max_length=50, null=True, blank=True)
     # email = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
     profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
-
-
-    # def __str__(self):
-    #     return str(self.User)
+    added_on = models.DateTimeField(auto_now_add=True, null=True)
+    update_on = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
-        return self.user.username
-
+        return self.user.email
 
 
 # class Subjects (models.Model):

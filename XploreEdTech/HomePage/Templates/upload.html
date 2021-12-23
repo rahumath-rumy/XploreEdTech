@@ -90,7 +90,7 @@
 <div class="form-group">
     <form enctype="multipart/form-data" method="POST" class="post-form" >
         {% csrf_token %}
-
+{#{{ form.as_p }}#}
         <table>
             <thead>
             <tr>
@@ -119,9 +119,8 @@
                 <td>{{ form.concept}}</td>
                 <td>{{ form.grade_level}}</td>
                 <td style="padding-left:70px;">{{ form.filepath}}</td>
-{#                <td><button  onclick="openForm()">Open Form</button></td>#}
                 <td> <input type="image" id="image" alt="submit"
-                            src="{% static 'images/submit.png' %}"  onclick="openForm()"> </td>
+                            src="{% static 'images/submit.png' %}"> </td>
             </tr>
             </thead>
             </tbody>

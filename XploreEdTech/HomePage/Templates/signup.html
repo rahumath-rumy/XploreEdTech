@@ -42,23 +42,32 @@
 
     <form method="POST" action="">
         {% csrf_token %}
-       {{ form.username }}
-        <span class="bar"></span>
-        <br>
-        <br>
-        {{ form.email}}
-        <span class="bar"></span>
-        <br>
-        <br>
-        {{ form.password1 }}
-        <span class="bar"></span>
-        <br>
-        <br>
-        {{ form.password2 }}
+
+     <div class="form-group">
+         <div class="row">
+
+{#             {{ form.as_p }}#}
+{#             {{ profile_form.as_p }}#}
+
+
+
+             <input type="text" class="form-control" placeholder="username" name="username" required>
+             <br>
+             <input type="email" class="form-control" placeholder="email" name="email" required>
+             <br>
+             <input type="password" class="form-control" placeholder="password" name="password" required>
+             <br>
+             <input type="text" class="form-control" placeholder="subject" name="subject" required>
+             <br>
+             <input type="text" class="form-control" placeholder="Grade-Level" name="gl" required>
+             <br>
+             <input type="text" class="form-control" placeholder="Profession / Role " name="prof" required>
+             <br>
+
+         </div>
+     </div>
         <span class="bar"></span>
 
-        {{ prof.subject }}
-        <span class="bar"></span>
 
         <button type=""submit class="submitbtn" style="margin-left:135px;"> Sign Up</button>
 
@@ -83,17 +92,17 @@
     };
 </script>
 
-<script>
-    //using vanilla javascript placholders are entered
-    const form_fields = document.getElementsByTagName('input')
-    form_fields[1].placeholder = 'Username';
-    form_fields[2].placeholder = 'Email';
-    form_fields[3].placeholder = 'Password';
-    form_fields[4].placeholder = 'Confirm Password';
-    form_fields[5].placeholder = 'Confirm Password';
-
-    for (const field in form_fields){
-        form_fields[field].className += 'form-control'
-    }
-
-</script>
+{#<script>#}
+{#    //using vanilla javascript placholders are entered#}
+{#    const form_fields = document.getElementsByTagName('input')#}
+{#    form_fields[1].placeholder = 'Username';#}
+{#    form_fields[2].placeholder = 'Email';#}
+{#    form_fields[3].placeholder = 'Password';#}
+{#    form_fields[4].placeholder = 'Confirm Password';#}
+{#    form_fields[5].placeholder = 'Confirm Password';#}
+{##}
+{#    for (const field in form_fields){#}
+{#        form_fields[field].className += 'form-control'#}
+{#    }#}
+{##}
+{#</script>#}

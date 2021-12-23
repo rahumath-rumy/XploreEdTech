@@ -1,7 +1,7 @@
 import os.path
 from django.conf import settings
 from django.shortcuts import render, redirect
-from .forms import CreateUserForm, FileUpload, Profile, UserCreationForm
+from .forms import FileUpload,  UserCreationForm, ExtendedUserCreationForm
 from django.contrib import messages
 from .models import *
 from .models import Worksheets
@@ -16,25 +16,51 @@ def home(request):
     # name = "Rahmath"
     return render(request, 'index.html')
 
+def register(request):
+    if request.method == "POST":
+       # fname = request.POST['firstname']
+        un = request.POST['username']
+        email = request.POST['email']
+        pwd = request.POST['password']
+        cpwd = request.POST['confirmpassword']
+        sub = request.POST['subject']
 
-def signup(request):
-    #main one
-    form = CreateUserForm()
-    if request.method == 'POST':
-        form = CreateUserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            user = form.cleaned_data.get('username')
-            messages.success(request, 'Welcome ' + user + ' your account has been created!')
-            return redirect('getstarted')
+        usr = User.objects.create_user(un, email, pwd)
+        #usr.first_name = fname
+        usr.save()
 
-    form = User.objects.all()
-    context = {'form': form}
-    return render(request, 'signup.html', context)
+        reg = register_table(user=usr, subjects=sub)
+        reg.save()
+        return HttpResponse("DONE!")
+    return render(request, "signup.html")
 
-#till here
-
-
+# def signup(request):
+#     #main one
+#     #form = CreateUserForm()
+#     if request.method == 'POST':
+#         form = ExtendedUserCreationForm(request.POST)
+#         profile_form = ProfileForm(request.POST)
+#
+#         if form.is_valid() and profile_form.is_valid():
+#             user = form.save()
+#
+#             profile_f = profile_form.save(commit=False)
+#             profile_f.user = user
+#             profile_f.save()
+#
+#             user = form.cleaned_data.get('username')
+#             messages.success(request, 'Welcome ' + user + ' your account has been created!')
+#             return redirect('getstarted.html')
+#     else:
+#         form = ExtendedUserCreationForm()
+#         profile_form = ProfileForm()
+#     # form = User.objects.all()
+#     context = {'form': form, 'profile_form': profile_form}
+#     return render(request, 'signup.html', context)
+#
+# #till here
+#
+#
 
     #     reg = RegUser()
     #
@@ -78,19 +104,19 @@ def signup(request):
     # else:
 
 def getstarted(request):
-    if request.method=='POST':
-        prof = request.POST['prof']
-        sub = request.POST["sub"]
-        gl = request.POST["gl"]
-
-        user = User.objects.create_user(prof, sub, gl)
-        # user.profession = prof
-        # user.subjects = sub
-        user.save()
-
-        reg = profile(user=user, profession=prof, subjects=sub, grade_level=gl)
-        reg.save()
-        return HttpResponse("SUCCESS")
+    # if request.method=='POST':
+    #     prof = request.POST['prof']
+    #     sub = request.POST["sub"]
+    #     gl = request.POST["gl"]
+    #
+    #     user = User.objects.create_user(prof, sub, gl)
+    #     # user.profession = prof
+    #     # user.subjects = sub
+    #     user.save()
+    #
+    #     reg = profile(user=user, profession=prof, subjects=sub, grade_level=gl)
+    #     reg.save()
+    #     return HttpResponse("SUCCESS")
 
     return render(request, 'signup.html')
 
@@ -98,10 +124,25 @@ def getstarted(request):
 def checkout(request):
     return render(request, 'checkout.html')
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def profile(request):
-    #prof = Profile()
-    #return render(request, 'profile.html')
+    # prof = Profile()
+    # if request.method == 'POST':
+    #     fname = request.POST["firstname"]
+    #     email = request.POST["email"]
+    #     uname = request.POST["username"]
+    #     pwd = request.POST["password"]
+    #     cpwd = request.POST["confirmpassword"]
+    #     sub = request.POST["subject"]
+    #
+    #     usr = User.objects.create_user(fname, email, uname, pwd, cpwd, sub)
+    #     usr.save()
+    #
+    #     prof = Profile(user=usr, subjects=sub)
+    #     prof.save()
+    #     return HttpResponse("DONE")
+
+    return render(request, 'profile.html')
 
     # form = Profile()
     # if request.method == 'POST':
@@ -116,8 +157,8 @@ def profile(request):
     # context = {'form': form}
     # return render(request, 'signup.html', context)
 
-    prof = User.objects.all()
-    return render(request, 'profile.html', {'User': prof})
+    # prof = User.objects.all()
+    # return render(request, 'profile.html', {'User': prof})
 
 
 def login_view(request):
@@ -161,8 +202,8 @@ def upload(request):
             return HttpResponse("Worksheets Uploaded")
     else:
         uploads = FileUpload()
-        return render(request, 'upload', {'form': uploads})
-
+        return render(request, 'upload.html', {'form': uploads})
+    # return render(request, 'upload.html')
 
 def worksheet(request):
     worksheet_files = Worksheets.objects.all()
