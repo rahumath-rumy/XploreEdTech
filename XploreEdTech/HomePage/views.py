@@ -1,7 +1,7 @@
 import os.path
 from django.conf import settings
 from django.shortcuts import render, redirect
-from .forms import FileUpload,  UserCreationForm, ExtendedUserCreationForm
+from .forms import FileUpload, UserCreationForm
 from django.contrib import messages
 from .models import *
 from .models import Worksheets
@@ -16,23 +16,37 @@ def home(request):
     # name = "Rahmath"
     return render(request, 'index.html')
 
+
 def register(request):
     if request.method == "POST":
-       # fname = request.POST['firstname']
+        # fname = request.POST['firstname']
         un = request.POST['username']
         email = request.POST['email']
         pwd = request.POST['password']
-        cpwd = request.POST['confirmpassword']
+        cpwd = request.POST['confirmpwd']
+        school = request.POST['school']
         sub = request.POST['subject']
+        gl = request.POST['gl']
+        role = request.POST['prof']
 
-        usr = User.objects.create_user(un, email, pwd)
-        #usr.first_name = fname
-        usr.save()
+        if pwd == cpwd:
+            if User.objects.filter(email=email).exists() or User.objects.filter(username=un).exists():
+                messages.info(request, "The Email or Username already exists ")
+               # print("Email or Username already exists ")
+            # if User.objects.filter(username=un).exists():
+            #     print("Username already exists")
+            else:
+                usr = User.objects.create_user(un, email, pwd)
+                usr.save()
 
-        reg = register_table(user=usr, subjects=sub)
-        reg.save()
-        return HttpResponse("DONE!")
+                reg = register_table(user=usr, subjects=sub, grade_level=gl, profession=role, school=school)
+                reg.save()
+                return render(request, 'profile.html')
+        else:
+            messages.info(request, "The Passwords Do Not Match! ")
+            #print("Passwords dont match")
     return render(request, "signup.html")
+
 
 # def signup(request):
 #     #main one
@@ -62,104 +76,58 @@ def register(request):
 #
 #
 
-    #     reg = RegUser()
-    #
-    #     email = request.POST['email']
-    #     username = request.POST['username']
-    #     password1 = request.POST['password1']
-    #     password2 = request.POST['password2']
-    #     reg.email = email
-    #     reg.username = username
-    #     reg.password = password1
-    #     reg.save()
-    #     return HttpResponse("thanks")
-    # return render(request, 'index.html')
-    #     user = User.objects.create_user(email=email, username=username, password1=password1)
-    #     user.save();
-    #     print("user created")
-    #     return redirect('/')
-    #
-    # else:
-    #     return render(request, 'signup.html')
 
-    #    username = request.POST['username']
-    #    email = request.POST['email']
-    #     password = request.POST['password']
-    #     confirmpassword = request.POST['confirmpassword']
-    #
-    #     if password == confirmpassword:
-    #         if User.objects.filter(email=email).exists():
-    #             print("Email already exists")
-    #         if User.objects.filter(username=username).exists():
-    #             print("Username already exists")
-    #         else:
-    #             user = User.objects.create_user(username=username, email=email, password=password)
-    #             user.save()
-    #             print('user created')
-    #
-    #     else:
-    #         print("Passwords dont match")
-    #
-    #     return redirect('/')
-    # else:
-
-def getstarted(request):
-    # if request.method=='POST':
-    #     prof = request.POST['prof']
-    #     sub = request.POST["sub"]
-    #     gl = request.POST["gl"]
-    #
-    #     user = User.objects.create_user(prof, sub, gl)
-    #     # user.profession = prof
-    #     # user.subjects = sub
-    #     user.save()
-    #
-    #     reg = profile(user=user, profession=prof, subjects=sub, grade_level=gl)
-    #     reg.save()
-    #     return HttpResponse("SUCCESS")
-
-    return render(request, 'signup.html')
+#    username = request.POST['username']
+#    email = request.POST['email']
+#     password = request.POST['password']
+#     confirmpassword = request.POST['confirmpassword']
+#
+#     if password == confirmpassword:
+#         if User.objects.filter(email=email).exists():
+#             print("Email already exists")
+#         if User.objects.filter(username=username).exists():
+#             print("Username already exists")
+#         else:
+#             user = User.objects.create_user(username=username, email=email, password=password)
+#             user.save()
+#             print('user created')
+#
+#     else:
+#         print("Passwords dont match")
+#
+#     return redirect('/')
+# else:
 
 
 def checkout(request):
     return render(request, 'checkout.html')
 
+
 @login_required(login_url='login')
 def profile(request):
-    # prof = Profile()
-    # if request.method == 'POST':
-    #     fname = request.POST["firstname"]
-    #     email = request.POST["email"]
-    #     uname = request.POST["username"]
-    #     pwd = request.POST["password"]
-    #     cpwd = request.POST["confirmpassword"]
-    #     sub = request.POST["subject"]
-    #
-    #     usr = User.objects.create_user(fname, email, uname, pwd, cpwd, sub)
-    #     usr.save()
-    #
-    #     prof = Profile(user=usr, subjects=sub)
-    #     prof.save()
-    #     return HttpResponse("DONE")
+    context = {}
+    prof = register_table.objects.get(user__id=request.user.id)
+    context["prof"] = prof
+    if request.method == "POST":
+        un = request.POST['username']
+        email = request.POST['email']
+        school = request.POST['school']
+        sub = request.POST['subject']
+        gl = request.POST['gl']
+        role = request.POST['prof']
 
-    return render(request, 'profile.html')
+        usr = User.objects.get(id=request.user.id)
+        usr.email = email
+        usr.save()
 
-    # form = Profile()
-    # if request.method == 'POST':
-    #     form = Profile(request.POST)
-    #     if form.is_valid():
-    #         form.save()
-    #         # user = form.cleaned_data.get('username')
-    #         messages.success(request, 'Welcome ' + user + ' your account has been created!')
-    #         return redirect('profile')
-    #
-    # # user_details = User.objects.all()
-    # context = {'form': form}
-    # return render(request, 'signup.html', context)
+        prof.school = school
+        prof.subjects = sub
+        prof.grade_level = gl
+        prof.profession = role
+        prof.save()
+        context["status"] = "Updated Profile"
 
-    # prof = User.objects.all()
-    # return render(request, 'profile.html', {'User': prof})
-
+    return render(request, "profile.html", context)
 
 def login_view(request):
     if request.method == 'POST':
@@ -205,6 +173,7 @@ def upload(request):
         return render(request, 'upload.html', {'form': uploads})
     # return render(request, 'upload.html')
 
+
 def worksheet(request):
     worksheet_files = Worksheets.objects.all()
     return render(request, 'worksheets.html', {'worksheet_files': worksheet_files})
@@ -219,4 +188,3 @@ def download(request, path):
             response['Content-Disposition'] = 'inline;filename=' + os.path.basename(file_path)
             return response
         raise Http404
-

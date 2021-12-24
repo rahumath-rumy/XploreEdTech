@@ -23,6 +23,10 @@
 </style>
 <body class="bg-img">
 
+
+{% include "msg.html" %}
+
+
 <div class=signup>
     <a href="http://127.0.0.1:8000/">
         <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
@@ -51,17 +55,21 @@
 
 
 
-             <input type="text" class="form-control" placeholder="username" name="username" required>
+             <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
              <br>
-             <input type="email" class="form-control" placeholder="email" name="email" required>
+             <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
              <br>
-             <input type="password" class="form-control" placeholder="password" name="password" required>
+             <input type="password" class="form-control" placeholder="Enter Password" name="password" required>
              <br>
-             <input type="text" class="form-control" placeholder="subject" name="subject" required>
+             <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpwd" required>
              <br>
-             <input type="text" class="form-control" placeholder="Grade-Level" name="gl" required>
+             <input type="text" class="form-control" placeholder="Name of institute/school...?" name="school" required>
              <br>
-             <input type="text" class="form-control" placeholder="Profession / Role " name="prof" required>
+             <input type="text" class="form-control" placeholder="What Subject/s Do You Teach?" name="subject" required>
+             <br>
+             <input type="text" class="form-control" placeholder="What Grade Level Do You Teach?" name="gl" required>
+             <br>
+             <input type="text" class="form-control" placeholder="What Is The Role You Play? Eg: Educator, Subject Co-ordinator." name="prof" required>
              <br>
 
          </div>
@@ -106,3 +114,11 @@
 {#    }#}
 {##}
 {#</script>#}
+
+<script>
+    setTimeout(function (){
+        if ($('#msg').length > 0){
+            $('#msg').remove();
+        }
+    }, 2000)
+</script>
