@@ -32,7 +32,7 @@ def register(request):
         if pwd == cpwd:
             if User.objects.filter(email=email).exists() or User.objects.filter(username=un).exists():
                 messages.info(request, "The Email or Username already exists ")
-               # print("Email or Username already exists ")
+            # print("Email or Username already exists ")
             # if User.objects.filter(username=un).exists():
             #     print("Username already exists")
             else:
@@ -41,10 +41,12 @@ def register(request):
 
                 reg = register_table(user=usr, subjects=sub, grade_level=gl, profession=role, school=school)
                 reg.save()
-                return render(request, 'profile.html')
+                return render(request, "login.html",
+                              {"status": "{} , Welcome! Your Account has been created successfully!" .format(un)})
+                #return render(request, 'profile.html')
         else:
             messages.info(request, "The Passwords Do Not Match! ")
-            #print("Passwords dont match")
+            # print("Passwords dont match")
     return render(request, "signup.html")
 
 
@@ -109,15 +111,15 @@ def profile(request):
     prof = register_table.objects.get(user__id=request.user.id)
     context["prof"] = prof
     if request.method == "POST":
-        un = request.POST['username']
-        email = request.POST['email']
+        # un = request.POST['username']
+        # email = request.POST['email']
         school = request.POST['school']
         sub = request.POST['subject']
         gl = request.POST['gl']
         role = request.POST['prof']
 
         usr = User.objects.get(id=request.user.id)
-        usr.email = email
+        # usr.email = email
         usr.save()
 
         prof.school = school
@@ -125,9 +127,11 @@ def profile(request):
         prof.grade_level = gl
         prof.profession = role
         prof.save()
-        context["status"] = "Updated Profile"
+        # context["status"] = "Updated Profile"
+        return render(request, "profile.html", {"status": "{} Your Profile Has Been Updated"})
 
     return render(request, "profile.html", context)
+
 
 def login_view(request):
     if request.method == 'POST':

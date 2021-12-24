@@ -25,7 +25,7 @@
 
 {% include "msg.html" %}
 
-<div class=signup>
+<div class=login>
     <a href="http://127.0.0.1:8000/">
         <img src="{% static 'images/XET logo.png' %}" alt = "logo" class="logo"></img>
     </a>
@@ -53,14 +53,14 @@
         <span class="bar"></span>
 
         <br>
-        <H6 style="color:#BBBBBB; font-family: roboto; text-align: center; margin-top:8px;"> <p><a href="{% url "password_reset" %}">Forgot Password? </a> </H6>
+        <H6 style="font-family: roboto ,'Work Sans'; text-align: center; text-decoration: none; color:#757575; margin-top:8px;">
+            <a href="{% url "password_reset" %}">Forgot Password? </a> </H6>
         <button type=""submit class="submitbtn" style="margin-left:135px;"> LOGIN  </button>
 
-        <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
+        <a href='http://127.0.0.1:8000 ' class="cancelbtn" > CANCEL</a>
         <br>
         <br>
-        <br>
-        <h6> DON'T HAVE AN ACCOUNT ? <a href="accounts"> SIGNUP </a> </h6>
+        <h6> DON'T HAVE AN ACCOUNT ? <a href="accounts" style="text-decoration: none;"> SIGNUP </a> </h6>
     </form>
 
 </div>

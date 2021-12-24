@@ -50,11 +50,6 @@
      <div class="form-group">
          <div class="row">
 
-{#             {{ form.as_p }}#}
-{#             {{ profile_form.as_p }}#}
-
-
-
              <input type="text" class="form-control" placeholder="Enter Username" name="username" required>
              <br>
              <input type="email" class="form-control" placeholder="Enter Email" name="email" required>
@@ -71,7 +66,6 @@
              <br>
              <input type="text" class="form-control" placeholder="What Is The Role You Play? Eg: Educator, Subject Co-ordinator." name="prof" required>
              <br>
-
          </div>
      </div>
         <span class="bar"></span>
@@ -82,8 +76,7 @@
         <button onclick="window.location.href='http://127.0.0.1:8000 '" class="cancelbtn" > CANCEL</button>
         <br>
         <br>
-        <br>
-        <h6> ALREADY HAVE AN ACCOUNT ? <a href="login"> LOGIN </a> </h6>
+        <h6> ALREADY HAVE AN ACCOUNT ? <a href="login" style="text-decoration: none;"> LOGIN </a> </h6>
     </form>
 
     {{form.errors}}
@@ -122,3 +115,10 @@
         }
     }, 2000)
 </script>
+
+{% if status %}
+    <script>
+    alert ("{{ status }}");
+    </script>
+
+{% endif%}

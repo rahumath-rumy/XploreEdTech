@@ -1,6 +1,22 @@
 .signup{
     width: 517px;
-    height: 770px;
+    height: 850px;
+    background: #F2F2F2;
+    mix-blend-mode: normal;
+    box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: auto;
+    margin-top:100px;
+    margin-bottom:100px;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    padding-left:30px;
+}
+
+.login{
+    width: 517px;
+    height: 670px;
     background: #F2F2F2;
     mix-blend-mode: normal;
     box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.1);
@@ -13,8 +29,6 @@
     font-weight: bold;
     padding-left:30px;
 
-    /*display: flex;
-    justify-content: center;  */
 }
 
 .logo{
@@ -137,7 +151,7 @@ form i {
     width: 80px;
     height: 40px;
     margin-left:20px;
-    margin-top:10px;
+    margin-top:0px;
     text-align: center;
     text-decoration:none;
     background-color: white;
@@ -163,7 +177,7 @@ form i {
     width: 80px;
     height: 40px;
     margin-left:20px;
-    margin-top:10px;
+    margin-top:0px;
     text-align: center;
     text-decoration:none;
     background: #2C0C3D;

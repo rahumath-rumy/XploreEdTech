@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class register_table(models.Model):
-    #profileid = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
+    profileid = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     school = models.CharField(max_length=50, null=True, blank=True)
     grade_level = models.CharField(max_length=50, null=True, blank=True)
