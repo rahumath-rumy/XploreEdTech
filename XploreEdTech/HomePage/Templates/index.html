@@ -8,6 +8,7 @@
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <title>XploreEdTech</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,12 +50,12 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Maths</a>
+            <a href="math">Maths</a>
             <a href="#">Science</a>
             <a href="#">Computing</a>
         </div>
     </div>
-    <a href="#commontools">COMMON TOOLS</a>
+    <a href="common">COMMON TOOLS</a>
     <a href="worksheet">WORKSHEETS</a>
     <a href="about">ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -66,40 +67,63 @@
     <div class="row" id="search">
         <h2 class="cet" > COMMON <span style="color: #2C0C3D"> EDTECH TOOLS </span> </h2>
 
+        <div class="gallery">
+            {% for common in common_tool %}
+                <div class="tile">
+                    <div class="posttool">
+                        <a href="{{ common.link3 }}"  target="_blank">
+                            <img src="{{ common.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
+                        <a href="{{ common.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
+                            <strong> {{ common.tool }}  </strong> </a> <br>
+                        <p style="text-transform: uppercase; font-weight: 900;">{{ common.subject }} </p>
+                        Grade : {{ common.grade_level }}
+                        <hr>
+                        {{ common.desc }} </p>
+                        <hr>
 
-        <form id="search-form" action="" method="POST" enctype="multipart/form-data">
-            <div class="form-group col-xs-9">
-                <input class="form-control" type="text" placeholder="Search" />
-            </div>
-            <div class="form-group col-xs-3">
-                <button type="submit" class="btn btn-block btn-primary">Search</button>
-            </div>
-        </form>
-    </div>
-    <div class="row" id="filter">
+                        <b> How To Use :</b> <br> <br>
+                        <a href="{{ common.link1 }}"  target="_blank"> WATCH VIDEO 1 </a> <br>
+                        <a href="{{ common.link2 }}"  target="_blank"> WATCH VIDEO 2</a> <br> <br>
+                        <a href="{{ common.guide }}"  target="_blank"> Tool Guide  <br> </a>
 
-        <form>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="make" class="filter-make filter form-control">
-                    <option value="">Select Make</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="model" class="filter-model filter form-control">
-                    <option value="">Select Model</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-            <div class="form-group col-sm-3 col-xs-6">
-                <select data-filter="type" class="filter-type filter form-control">
-                    <option value="">Select Type</option>
-                    <option value="">Show All</option>
-                </select>
-            </div>
-        </form>
-    </div>
-</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+{#        <form id="search-form" action="" method="POST" enctype="multipart/form-data">#}
+{#            <div class="form-group col-xs-9">#}
+{#                <input class="form-control" type="text" placeholder="Search" />#}
+{#            </div>#}
+{#            <div class="form-group col-xs-3">#}
+{#                <button type="submit" class="btn btn-block btn-primary">Search</button>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#    <div class="row" id="filter">#}
+{##}
+{#        <form>#}
+{#            <div class="form-group col-sm-3 col-xs-6">#}
+{#                <select data-filter="make" class="filter-make filter form-control">#}
+{#                    <option value="">Select Make</option>#}
+{#                    <option value="">Show All</option>#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="form-group col-sm-3 col-xs-6">#}
+{#                <select data-filter="model" class="filter-model filter form-control">#}
+{#                    <option value="">Select Model</option>#}
+{#                    <option value="">Show All</option>#}
+{#                </select>#}
+{#            </div>#}
+{#            <div class="form-group col-sm-3 col-xs-6">#}
+{#                <select data-filter="type" class="filter-type filter form-control">#}
+{#                    <option value="">Select Type</option>#}
+{#                    <option value="">Show All</option>#}
+{#                </select>#}
+{#            </div>#}
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
 
 
 <footer>

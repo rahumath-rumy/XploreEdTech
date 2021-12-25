@@ -105,6 +105,18 @@ input  {
     left:5px;
 }
 
+.select {
+    font-size:14px;
+    padding:10px 10px 10px 5px;
+    display:block;
+    margin-left:35px;
+    width:380px;
+    border:none;
+    border-bottom:1px solid #816f6f;
+    color:#000000;
+    left:5px;
+}
+
 input[type=email], [type=password], [type=text]{
     font-family:work sans;
     padding-left:20px;

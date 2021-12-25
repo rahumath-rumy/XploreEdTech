@@ -32,6 +32,9 @@ urlpatterns = [
                   path('checkout', include("HomePage.urls")),
                   path('upload', include("HomePage.urls")),
                   path('worksheet', include("HomePage.urls")),
+                  path('search', include("HomePage.urls")),
+                  path('common', include("HomePage.urls")),
+                  path('math', include("HomePage.urls")),
 
                   # path('logout', include("django.contrib.auth.urls")),
 

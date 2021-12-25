@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(register_table)
 admin.site.register(Worksheets)
+admin.site.register(TechTool)

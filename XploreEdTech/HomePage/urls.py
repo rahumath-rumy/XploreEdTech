@@ -15,6 +15,9 @@ urlpatterns = [
     path('upload', views.upload, name="upload"),
     path('worksheet', views.worksheet, name="worksheet"),
     path('checkout', views.checkout, name="checkout"),
+    path('search', views.wksearch, name="search"),
+    path('common', views.commontools, name="common"),
+    path('math', views.mathtool, name="math"),
 
     path("password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"),
     path("password_reset/done", auth_views.PasswordResetCompleteView.as_view(template_name='password_change_done.html'),

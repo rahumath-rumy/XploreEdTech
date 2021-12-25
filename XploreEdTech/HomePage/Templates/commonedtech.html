@@ -1,16 +1,13 @@
 <!DOCTYPE HTML>
 {% load static  %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <title>Donate</title>
+    <title>Common EdTech Tools</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,13 +15,14 @@
 
 <style>
     .bg-img{
-        background-image: url({% static 'images/bgt.png' %});
+        background-image: url({% static 'images/common.png' %});
         background-size: 1450px 750px;
         line-height :15px;
+        background-color: transparent;
     }
 </style>
 
-<body bgcolor="white">
+<body class="bg-img">
 
 <div class="header">
     <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
@@ -52,34 +50,37 @@
             <a href="#">Computing</a>
         </div>
     </div>
-    <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets" class="active" style="width:160px; height:40px; margin-top:2px;">WORKSHEETS</a>
+    <a href="#commontools" class="active" style="width:200px; height:40px; margin-top:2px;">COMMON TOOLS</a>
+    <a href="#worksheets"  >WORKSHEETS</a>
     <a href="about" >ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 
-<form action="{% url 'search' %}" method="GET">
-    <input name="wksearch" type="text">
-    <button type ="submit"> SEARCH</button>
-</form>
-
+<body>
 <div class="gallery">
-            {% for wksheet in worksheet_files %}
-                <div class="tile">
-                    <div class="post">
-                <strong>{{ wksheet.subject }}  </strong> <br> <br>
-                <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
-                        Concept: {{ wksheet.concept }}  <br>
-                        Grade Level :  {{ wksheet.grade_level }} <br>
-                        Contributed By : {{ wksheet.name }} <br>
-                        School : {{ wksheet.school }} <br>
-                        LKR {{ wksheet.price }}  <br> <br>
-                        <a class="buy" href="">Buy Now</a> <br>
-                </div>
-                </div>
-            {% endfor %}
+    {% for common in common_tool %}
+        <div class="tile">
+            <div class="posttool">
+                <a href="{{ common.link3 }}"  target="_blank">
+                    <img src="{{ common.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
+                <a href="{{ common.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
+                    <strong> {{ common.tool }}  </strong> </a> <br>
+                <p style="text-transform: uppercase; font-weight: 900;">{{ common.subject }} </p>
+                    Grade : {{ common.grade_level }}
+                <hr>
+                {{ common.desc }} </p>
+                <hr>
+
+                <b> How To Use :</b> <br> <br>
+                 <a href="{{ common.link1 }}"  target="_blank"> WATCH VIDEO 1 </a> <br>
+                 <a href="{{ common.link2 }}"  target="_blank"> WATCH VIDEO 2</a> <br> <br>
+                 <a href="{{ common.guide }}"  target="_blank"> Tool Guide  <br> </a>
+
+            </div>
+        </div>
+    {% endfor %}
 </div>
 </body>
 

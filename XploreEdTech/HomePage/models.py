@@ -35,4 +35,20 @@ class Worksheets(models.Model):
     filepath = models.FileField(upload_to="worksheets/", null=True)
 
     def __str__(self):
-        return self.subject + ' ' + self.concept
+        return self.subject + '-' + self.concept
+
+class TechTool(models.Model):
+    toolID = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
+    subject = models.CharField(max_length=500)
+    tool = models.CharField(max_length=500)
+    logo = models.ImageField(upload_to="edtechtool/", null=True)
+    grade_level = models.CharField(max_length=500,  null=True)
+    concept = models.CharField(max_length=500,  null=True)
+    desc = models.CharField(max_length=1500,  null=True)
+    link1 = models.CharField(max_length=1000, null=True)
+    link2 = models.CharField(max_length=1000, null=True)
+    link3 = models.CharField(max_length=1000, null=True)
+    guide = models.CharField(max_length=1000, null=True)
+
+    def __str__(self):
+        return self.subject + '-' + self.tool

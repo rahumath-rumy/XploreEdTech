@@ -13,8 +13,10 @@ from django.contrib.auth.models import User
 
 
 def home(request):
-    # name = "Rahmath"
-    return render(request, 'index.html')
+
+    common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
+    return render(request, "index.html", {'common_tool': common_tool})
+
 
 
 def register(request):
@@ -42,8 +44,8 @@ def register(request):
                 reg = register_table(user=usr, subjects=sub, grade_level=gl, profession=role, school=school)
                 reg.save()
                 return render(request, "login.html",
-                              {"status": "{} , Welcome! Your Account has been created successfully!" .format(un)})
-                #return render(request, 'profile.html')
+                              {"status": "{} , Welcome! Your Account has been created successfully!".format(un)})
+                # return render(request, 'profile.html')
         else:
             messages.info(request, "The Passwords Do Not Match! ")
             # print("Passwords dont match")
@@ -192,3 +194,19 @@ def download(request, path):
             response['Content-Disposition'] = 'inline;filename=' + os.path.basename(file_path)
             return response
         raise Http404
+
+
+def wksearch(request):
+    #if request.method  == 'GET':
+    wksearch= request.GET['wksearch']
+    data = Worksheets.objects.filter(subject__icontains=wksearch).order_by('-worksheetID')
+    return render(request, 'search.html', {"data": data})
+
+def commontools(request):
+    common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
+    return render(request, "commonedtech.html", {'common_tool': common_tool})
+
+def mathtool(request):
+    common_tool = TechTool.objects.all().filter(subject="Maths")
+    return render(request, "commonedtech.html", {'common_tool': common_tool})
+
