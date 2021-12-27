@@ -18,7 +18,6 @@ def home(request):
     return render(request, "index.html", {'common_tool': common_tool})
 
 
-
 def register(request):
     if request.method == "POST":
         # fname = request.POST['firstname']
@@ -207,6 +206,6 @@ def commontools(request):
     return render(request, "commonedtech.html", {'common_tool': common_tool})
 
 def mathtool(request):
-    common_tool = TechTool.objects.all().filter(subject="Maths")
+    common_tool = TechTool.objects.all().filter(subject__contains="Math")
     return render(request, "commonedtech.html", {'common_tool': common_tool})
 

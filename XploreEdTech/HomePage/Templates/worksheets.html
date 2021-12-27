@@ -41,20 +41,21 @@
 </div>
 
 <div class="topnav" id="myTopnav">
-    <a href="http://127.0.0.1:8000/" >HOME</a>
+    <a href="http://127.0.0.1:8000/">HOME</a>
     <div class="dropdown">
         <button class="dropbtn">SUBJECTS
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Maths</a>
-            <a href="#">Science</a>
-            <a href="#">Computing</a>
+            <a href="math">Maths</a>
+            <a href="science">Science</a>
+            <a href="preschool">Pre-school</a>
+            <a href="language">Language</a>
         </div>
     </div>
-    <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets" class="active" style="width:160px; height:40px; margin-top:2px;">WORKSHEETS</a>
-    <a href="about" >ABOUT</a>
+    <a href="common">COMMON TOOLS</a>
+    <a href="worksheet" class="active" style="width:160px; height:40px; margin-top:2px;">WORKSHEETS</a>
+    <a href="about">ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
@@ -70,7 +71,8 @@
                 <div class="tile">
                     <div class="post">
                 <strong>{{ wksheet.subject }}  </strong> <br> <br>
-                <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
+                <a class="download" href = "{{ wksheet.filepath }}"
+                   download="{{ wksheet.filepath.url }}" style="pointer-events: none"> Download </a> <br> <br>
                         Concept: {{ wksheet.concept }}  <br>
                         Grade Level :  {{ wksheet.grade_level }} <br>
                         Contributed By : {{ wksheet.name }} <br>

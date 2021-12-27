@@ -40,19 +40,20 @@
 </div>
 
 <div class="topnav" id="myTopnav">
-    <a href="http://127.0.0.1:8000/" >HOME</a>
+    <a href="http://127.0.0.1:8000/">HOME</a>
     <div class="dropdown">
         <button class="dropbtn">SUBJECTS
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="#">Maths</a>
-            <a href="#">Science</a>
-            <a href="#">Computing</a>
+            <a href="math">Maths</a>
+            <a href="science">Science</a>
+            <a href="#preschool">Pre-school</a>
+            <a href="language">Language</a>
         </div>
     </div>
-    <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets">WORKSHEETS</a>
+    <a href="common">COMMON TOOLS</a>
+    <a href="worksheet">WORKSHEETS</a>
     <a href="about" class="active">DONATE</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -71,12 +72,12 @@
                     by giving them the basic need? <br>
                     Well, click below and upload worksheets that you'll have and help educate a child!
                 </p>
-                    <a class="link"  onclick="openForm()">Click here to upload!</a> <br> <br>
+                    <a class="link"  onclick="openForm()" style="font-family: 'Work Sans'; cursor:pointer;">Click here to upload!</a> <br> <br>
 
                 <div class="form-popup" id="myForm" >
                     <div class="form-container">
                         <img src="https://img.icons8.com/fluency/28/000000/close-window.png"  onclick="closeForm()"
-                        style="margin-left:280px;">
+                        style="margin-left:280px; cursor:pointer;">
                         <img src = "{% static 'images/submit icon.png' %}" alt = "confirmation" class="confirm"> </a>
 
                         <p>By clicking <b>“Yes”</b> you agree that you have the permission of your institution to upload and/or
