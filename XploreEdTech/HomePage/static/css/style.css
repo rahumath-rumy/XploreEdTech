@@ -94,7 +94,7 @@ h1 {
 .topnav a.active {
     color: white;
     width: 70px;
-    height: 15px;
+    height: 40px;
     background: rgba(196, 196, 196, 0.3);
     mix-blend-mode: normal;
     border-radius: 100px;

@@ -106,39 +106,6 @@ table td {
     }
 }
 
-
-
-
-
-/*a.links {*/
-/*    width: 90px;*/
-/*    height: 40px;*/
-/*    text-decoration:none;*/
-/*    background: #2C0C3D;*/
-/*    border: 3px solid #2C0C3D;*/
-/*    box-sizing: border-box;*/
-/*    border-radius: 4px;*/
-/*    color:white;*/
-/*    margin-top:40px;*/
-/*    margin-left: 100px;*/
-/*    padding-left:10px;*/
-/*    padding-top:8px;*/
-/*    display:flex;*/
-/*    text-align:center;*/
-/*    margin-right: 30px;*/
-/*    font-size: 14px;*/
-/*    line-height: 18px;*/
-/*    font-family: Work sans;*/
-/*    float: left;*/
-/*    text-transform: uppercase;*/
-/*}*/
-
-/*!* Change the background color on mouse-over *!*/
-/*a.links:hover {*/
-/*    background-color: #ddd;*/
-/*    color: black;*/
-/*}*/
-
 .slideshow {
     max-width: 500px;
     position: relative;
@@ -219,7 +186,7 @@ table td {
 
 .container a.link{
     width: 200px;
-    /*height: 40px;*/
+    height: 40px;
     text-decoration:none;
     background: #2C0C3D;
     border: 3px solid #2C0C3D;
@@ -297,7 +264,7 @@ table td {
     font-weight:900;
 }
 
-/* Add some hover effects to buttons */
+
 .form-container .link1:hover img:hover {
     opacity: 0.5;
 }

@@ -6,7 +6,6 @@ urlpatterns = [
     # path("<int:home_id>/", views.techtool, name="techtool"),
     path('', views.home, name="Homepage"),
     path('accounts', views.register, name="accounts"),
-    # path('getstarted', views.getstarted, name="getstarted"),
     path('profile', views.profile, name="profile"),
     path('login/', views.login_view, name="login"),
     path('logout', views.logoutuser, name="logout"),
@@ -18,6 +17,10 @@ urlpatterns = [
     path('search', views.wksearch, name="search"),
     path('common', views.commontools, name="common"),
     path('math', views.mathtool, name="math"),
+    path('language', views.langtool, name="language"),
+    path('payment', views.payment.as_view(), name="payment"),
+    path('charge/', views.charge, name='charge'),
+
 
     path("password_reset/", auth_views.PasswordResetView.as_view(), name="password_reset"),
     path("password_reset/done", auth_views.PasswordResetCompleteView.as_view(template_name='password_change_done.html'),

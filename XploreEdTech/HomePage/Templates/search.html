@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <title>Donate</title>
+    <title>Search Results</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
@@ -59,19 +59,13 @@
         <i class="fa fa-bars"></i>
     </a>
 </div>
-<h1> SEARCH RESULTS for {{ request.GET.wksearch }}</h1>
-<form action="/search">
-    <input name="wksearch" type="search">
-    <button type ="submit"> SEARCH</button>
-</form>
+
+<h1 class="cet" style="margin: 2px 0 0 0"> SEARCH RESULTS FOR <span style="color: #2C0C3D">{{ request.GET.wksearch }} </span></h1>
 
 <div class="gallery">
-{#{% if searched %}#}
-{#    <h1> SEARCH RESULTS {{ searched }}</h1>#}
     {% for wksheet in data %}
         <div class="tile">
             <div class="post">
-
                 <strong>{{ wksheet.subject }}  </strong> <br> <br>
                 <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
                 Concept: {{ wksheet.concept }}  <br>
@@ -83,8 +77,6 @@
             </div>
         </div>
     {% endfor %}
-{#{% else %}#}
-{#{% endif %}#}
 </div>
 </body>
 

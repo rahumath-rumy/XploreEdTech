@@ -1,6 +1,10 @@
 import os.path
+
+import stripe as stripe
 from django.conf import settings
 from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
+
 from .forms import FileUpload, UserCreationForm
 from django.contrib import messages
 from .models import *
@@ -10,10 +14,12 @@ from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .functions import handle_uploaded_file
 from django.contrib.auth.models import User
+from django.conf import settings
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def home(request):
-
     common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
     return render(request, "index.html", {'common_tool': common_tool})
 
@@ -42,7 +48,7 @@ def register(request):
 
                 reg = register_table(user=usr, subjects=sub, grade_level=gl, profession=role, school=school)
                 reg.save()
-                return render(request, "login.html",
+                return render(request, "profile.html",
                               {"status": "{} , Welcome! Your Account has been created successfully!".format(un)})
                 # return render(request, 'profile.html')
         else:
@@ -196,16 +202,52 @@ def download(request, path):
 
 
 def wksearch(request):
-    #if request.method  == 'GET':
-    wksearch= request.GET['wksearch']
+    # if request.method  == 'GET':
+    wksearch = request.GET['wksearch']
+    # wksearch1 = request.GET['wksearch1']
     data = Worksheets.objects.filter(subject__icontains=wksearch).order_by('-worksheetID')
+    # data1 = Worksheets.objects.filter(concept__icontains=wksearch1).order_by('-worksheetID')
+    # dataaa = data and data1
     return render(request, 'search.html', {"data": data})
 
+def wksearch1(request):
+    wksearch1 = request.GET['wksearch1']
+    data = TechTool.objects.filter(subject__icontains=wksearch1).order_by('-worksheetID')
+    return render(request, 'search.html', {"data": data})
+
+# User = User.objects.all().extra(tables=['animal'],
+#                                 where=[
+#                                     'user.name = animal.name',
+#                                     'user.age > 18'
+#                                 ]
+#                                 )
 def commontools(request):
     common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
     return render(request, "commonedtech.html", {'common_tool': common_tool})
+
 
 def mathtool(request):
     common_tool = TechTool.objects.all().filter(subject__contains="Math")
     return render(request, "commonedtech.html", {'common_tool': common_tool})
 
+def langtool(request):
+    common_tool = TechTool.objects.all().filter(subject__icontains="Lang")
+    return render(request, "language.html", {'common_tool': common_tool})
+
+class payment(TemplateView):
+    template_name = 'payment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['key'] = settings.STRIPE_PUBLISHABLE_KEY
+        return context
+
+def charge(request):
+    if request.method == 'POST':
+        charge = stripe.Charge.create(
+            amount=500,
+            currency='LKR',
+            description="test",
+            source=request.POST['stripeToken']
+        )
+        return render(request, 'charge.html')
