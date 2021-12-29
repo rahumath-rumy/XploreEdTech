@@ -15,6 +15,7 @@ urlpatterns = [
     path('worksheet', views.worksheet, name="worksheet"),
     path('checkout', views.checkout, name="checkout"),
     path('search', views.wksearch, name="search"),
+    path('searchtool', views.toolsearch, name="searchtool"),
     path('common', views.commontools, name="common"),
     path('math', views.mathtool, name="math"),
     path('language', views.langtool, name="language"),

@@ -126,7 +126,6 @@ def profile(request):
         role = request.POST['prof']
 
         usr = User.objects.get(id=request.user.id)
-        # usr.email = email
         usr.save()
 
         prof.school = school
@@ -134,8 +133,7 @@ def profile(request):
         prof.grade_level = gl
         prof.profession = role
         prof.save()
-        # context["status"] = "Updated Profile"
-        return render(request, "profile.html", {"status": "{} Your Profile Has Been Updated"})
+        return render(request, "index.html", {"status": "{} Your Profile Has Been Updated"})
 
     return render(request, "profile.html", context)
 
@@ -159,17 +157,12 @@ def logoutuser(request):
     logout(request)
     return redirect('http://127.0.0.1:8000/')
 
-
-# def techtool(request, home_id):
-# return HttpResponse ("<h3> This page has all the tech tools </h3>")
-
 def about(request):
     return render(request, 'about.html')
 
 
 def donations(request):
     return render(request, 'donations.html')
-
 
 def upload(request):
     if request.method == 'POST':
@@ -182,13 +175,10 @@ def upload(request):
     else:
         uploads = FileUpload()
         return render(request, 'upload.html', {'form': uploads})
-    # return render(request, 'upload.html')
-
 
 def worksheet(request):
     worksheet_files = Worksheets.objects.all()
     return render(request, 'worksheets.html', {'worksheet_files': worksheet_files})
-
 
 def download(request, path):
     file_path = os.path.join(settings.MEDIA_ROOT, path)
@@ -200,7 +190,6 @@ def download(request, path):
             return response
         raise Http404
 
-
 def wksearch(request):
     # if request.method  == 'GET':
     wksearch = request.GET['wksearch']
@@ -210,10 +199,10 @@ def wksearch(request):
     # dataaa = data and data1
     return render(request, 'search.html', {"data": data})
 
-def wksearch1(request):
-    wksearch1 = request.GET['wksearch1']
-    data = TechTool.objects.filter(subject__icontains=wksearch1).order_by('-worksheetID')
-    return render(request, 'search.html', {"data": data})
+def toolsearch(request):
+    toolsearch = request.GET['toolsearch']
+    data1 = TechTool.objects.filter(concept__icontains=toolsearch).order_by('-toolID')
+    return render(request, 'searchtool.html', {"data1": data1})
 
 # User = User.objects.all().extra(tables=['animal'],
 #                                 where=[

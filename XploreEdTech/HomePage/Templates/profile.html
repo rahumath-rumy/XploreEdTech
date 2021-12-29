@@ -111,10 +111,7 @@
 {#                    {{ status }}#}
 {#                    </div>#}
                 {% endif %}
-{#                <input type="text" class="form-control" placeholder="Enter Username" name="username" value="{{ user.username }}">#}
-{#                <br>#}
-{#                <input type="email" class="form-control" placeholder="Enter Email" name="email" value="{{ user.email }}">#}
-{#                <br>#}
+
                 <input type="text" class="form-control" placeholder="Name of institute/school...?" name="school" value="{{ prof.school }}">
                 <br>
                 <input type="text" class="form-control" placeholder="What Subject/s Do You Teach?" name="subject" value="{{ prof.subjects }}">
@@ -123,7 +120,7 @@
                 <br>
                 <input type="text" class="form-control" placeholder="What Is The Role You Play? Eg: Educator, Subject Co-ordinator." name="prof" value="{{ prof.profession }}">
                 <br>
-                <input type="file" class="form-control" name="pro-pic">
+{#                <input type="file" class="form-control" name="pro-pic">#}
                 <br>
                 <button type="submit" class="updatebtn" > Update Profile</button>
 
@@ -137,9 +134,10 @@
         <br>
         <br>
         <br>
+        <br>
         <h2 style="text-align: center; color:#2C0C3D"> Delete Your Account? </h2>
-        <p> Deleting your account is permanent.
-            All content from this account will not be recoverable.</p>
+        <p style="text-align: center"> Deleting your account is permanent. <br>
+            All content from this account will not be recoverable.</p> <br>
         <a href = "" class="updatebtn"
            style="margin-top:10px; margin-left:160px; width:150px;
            padding:7px 0 5px 30px; background-color:red;  border: 3px solid red"> CLICK HERE </a>

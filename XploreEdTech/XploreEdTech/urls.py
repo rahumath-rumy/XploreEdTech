@@ -33,6 +33,7 @@ urlpatterns = [
                   path('upload', include("HomePage.urls")),
                   path('worksheet', include("HomePage.urls")),
                   path('search', include("HomePage.urls")),
+                  path('searchtool', include("HomePage.urls")),
                   path('common', include("HomePage.urls")),
                   path('math', include("HomePage.urls")),
                   path('language', include("HomePage.urls")),

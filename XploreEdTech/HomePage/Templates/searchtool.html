@@ -52,33 +52,41 @@
             <a href="#">Computing</a>
         </div>
     </div>
-    <a href="#commontools">COMMON TOOLS</a>
-    <a href="#worksheets" class="active" style="width:160px; height:40px; margin-top:2px;">WORKSHEETS</a>
+    <a href="#commontools" class="active" style="width:220px; margin-top:2px;">SEARCH RESULTS</a>
+    <a href="#worksheets" >WORKSHEETS</a>
     <a href="about" >ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 
-<h1 class="cet" style="margin: 2px 0 0 0"> SEARCH RESULTS FOR <span style="color: #2C0C3D">{{ request.GET.wksearch }} </span></h1>
+<h1 class="cet" style="margin: 2px 0 0 0"> SEARCH RESULTS FOR <span style="color: #2C0C3D">{{ request.GET.toolsearch }} </span></h1>
+
 
 <div class="gallery">
-    {% for wksheet in data %}
+    {% for tool in data1 %}
         <div class="tile">
-            <div class="post">
-                <strong>{{ wksheet.subject }}  </strong> <br> <br>
-                <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
-                Concept: {{ wksheet.concept }}  <br>
-                Grade Level :  {{ wksheet.grade_level }} <br>
-                Contributed By : {{ wksheet.name }} <br>
-                School : {{ wksheet.school }} <br>
-                LKR {{ wksheet.price }}  <br> <br>
-                <a class="buy" href="">Buy Now</a> <br>
+            <div class="posttool">
+                <a href="{{ tool.link3 }}"  target="_blank">
+                    <img src="{{ tool.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
+                <a href="{{ tool.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
+                    <strong> {{ tool.tool }}  </strong> </a> <br>
+                <p style="text-transform: uppercase; font-weight: 900;">{{ tool.subject }} </p>
+                Grade : {{ tool.grade_level }}
+                <hr>
+                {{ tool.desc }} </p>
+                <hr>
+
+                <b> How To Use :</b> <br> <br>
+                <a href="{{ tool.link1 }}"  target="_blank"> WATCH VIDEO 1 </a> <br>
+                <a href="{{ tool.link2 }}"  target="_blank"> WATCH VIDEO 2</a> <br> <br>
+                <a href="{{ tool.guide }}"  target="_blank"> Tool Guide  <br> </a>
             </div>
         </div>
-    {% empty %}
+        {% empty %}
         <h1 class="cet" style="margin: 2px 0 0 0; font-size: 20px;"> Sorry there are no results, <br>
             <span style="color: #2C0C3D; margin-top:0px;">Try something else... </span></h1>
+
     {% endfor %}
 </div>
 </body>
