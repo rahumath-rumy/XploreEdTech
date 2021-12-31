@@ -93,7 +93,7 @@
 </div>
 
 <div class="topnav">
-    <a href="#home" style="text-decoration: none; padding-left: 150px; font-size: 20px;"> EDUCATOR DASHBOARD  </a>
+    <a href="http://127.0.0.1:8000/" style="text-decoration: none; padding-left: 150px; font-size: 20px;"> EDUCATOR DASHBOARD  </a>
 </div>
 
 
@@ -106,10 +106,6 @@
                     <script>
                         alert("{{ status }}")
                     </script>
-
-{#                    <div class="alert alert-primary">#}
-{#                    {{ status }}#}
-{#                    </div>#}
                 {% endif %}
 
                 <input type="text" class="form-control" placeholder="Name of institute/school...?" name="school" value="{{ prof.school }}">
@@ -120,7 +116,6 @@
                 <br>
                 <input type="text" class="form-control" placeholder="What Is The Role You Play? Eg: Educator, Subject Co-ordinator." name="prof" value="{{ prof.profession }}">
                 <br>
-{#                <input type="file" class="form-control" name="pro-pic">#}
                 <br>
                 <button type="submit" class="updatebtn" > Update Profile</button>
 

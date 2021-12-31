@@ -1,11 +1,10 @@
 import os.path
 
 import stripe as stripe
-from django.conf import settings
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 
-from .forms import FileUpload, UserCreationForm
+from .forms import FileUpload
 from django.contrib import messages
 from .models import *
 from .models import Worksheets
@@ -20,13 +19,12 @@ stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 def home(request):
-    common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
+    common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")[:4]
     return render(request, "index.html", {'common_tool': common_tool})
 
 
 def register(request):
     if request.method == "POST":
-        # fname = request.POST['firstname']
         un = request.POST['username']
         email = request.POST['email']
         pwd = request.POST['password']
@@ -39,9 +37,6 @@ def register(request):
         if pwd == cpwd:
             if User.objects.filter(email=email).exists() or User.objects.filter(username=un).exists():
                 messages.info(request, "The Email or Username already exists ")
-            # print("Email or Username already exists ")
-            # if User.objects.filter(username=un).exists():
-            #     print("Username already exists")
             else:
                 usr = User.objects.create_user(un, email, pwd)
                 usr.save()
@@ -50,67 +45,9 @@ def register(request):
                 reg.save()
                 return render(request, "profile.html",
                               {"status": "{} , Welcome! Your Account has been created successfully!".format(un)})
-                # return render(request, 'profile.html')
         else:
             messages.info(request, "The Passwords Do Not Match! ")
-            # print("Passwords dont match")
     return render(request, "signup.html")
-
-
-# def signup(request):
-#     #main one
-#     #form = CreateUserForm()
-#     if request.method == 'POST':
-#         form = ExtendedUserCreationForm(request.POST)
-#         profile_form = ProfileForm(request.POST)
-#
-#         if form.is_valid() and profile_form.is_valid():
-#             user = form.save()
-#
-#             profile_f = profile_form.save(commit=False)
-#             profile_f.user = user
-#             profile_f.save()
-#
-#             user = form.cleaned_data.get('username')
-#             messages.success(request, 'Welcome ' + user + ' your account has been created!')
-#             return redirect('getstarted.html')
-#     else:
-#         form = ExtendedUserCreationForm()
-#         profile_form = ProfileForm()
-#     # form = User.objects.all()
-#     context = {'form': form, 'profile_form': profile_form}
-#     return render(request, 'signup.html', context)
-#
-# #till here
-#
-#
-
-
-#    username = request.POST['username']
-#    email = request.POST['email']
-#     password = request.POST['password']
-#     confirmpassword = request.POST['confirmpassword']
-#
-#     if password == confirmpassword:
-#         if User.objects.filter(email=email).exists():
-#             print("Email already exists")
-#         if User.objects.filter(username=username).exists():
-#             print("Username already exists")
-#         else:
-#             user = User.objects.create_user(username=username, email=email, password=password)
-#             user.save()
-#             print('user created')
-#
-#     else:
-#         print("Passwords dont match")
-#
-#     return redirect('/')
-# else:
-
-
-def checkout(request):
-    return render(request, 'checkout.html')
-
 
 @login_required(login_url='login')
 def profile(request):
@@ -118,8 +55,6 @@ def profile(request):
     prof = register_table.objects.get(user__id=request.user.id)
     context["prof"] = prof
     if request.method == "POST":
-        # un = request.POST['username']
-        # email = request.POST['email']
         school = request.POST['school']
         sub = request.POST['subject']
         gl = request.POST['gl']
@@ -191,37 +126,39 @@ def download(request, path):
         raise Http404
 
 def wksearch(request):
-    # if request.method  == 'GET':
     wksearch = request.GET['wksearch']
-    # wksearch1 = request.GET['wksearch1']
     data = Worksheets.objects.filter(subject__icontains=wksearch).order_by('-worksheetID')
-    # data1 = Worksheets.objects.filter(concept__icontains=wksearch1).order_by('-worksheetID')
-    # dataaa = data and data1
     return render(request, 'search.html', {"data": data})
 
 def toolsearch(request):
     toolsearch = request.GET['toolsearch']
     data1 = TechTool.objects.filter(concept__icontains=toolsearch).order_by('-toolID')
-    return render(request, 'searchtool.html', {"data1": data1})
+    return render(request, 'EdTechCat/searchtool.html', {"data1": data1})
 
-# User = User.objects.all().extra(tables=['animal'],
-#                                 where=[
-#                                     'user.name = animal.name',
-#                                     'user.age > 18'
-#                                 ]
-#                                 )
+def ctoolsearch(request):
+    ctoolsearch = request.GET['ctoolsearch']
+    data2 = TechTool.objects.filter(tool__icontains=ctoolsearch).order_by('-toolID')
+    return render(request, 'EdTechCat/csearchtool.html', {"data2": data2})
+
 def commontools(request):
     common_tool = TechTool.objects.all().filter(subject="Suitable for any subject")
-    return render(request, "commonedtech.html", {'common_tool': common_tool})
-
+    return render(request, "EdTechCat/commonedtech.html", {'common_tool': common_tool})
 
 def mathtool(request):
     common_tool = TechTool.objects.all().filter(subject__contains="Math")
-    return render(request, "commonedtech.html", {'common_tool': common_tool})
+    return render(request, "EdTechCat/maths.html", {'common_tool': common_tool})
 
 def langtool(request):
     common_tool = TechTool.objects.all().filter(subject__icontains="Lang")
-    return render(request, "language.html", {'common_tool': common_tool})
+    return render(request, "EdTechCat/language.html", {'common_tool': common_tool})
+
+def sciencetool(request):
+    common_tool = TechTool.objects.all().filter(subject__icontains="Sci")
+    return render(request, "EdTechCat/science.html", {'common_tool': common_tool})
+
+def preschooltool(request):
+    common_tool = TechTool.objects.all().filter(subject__icontains="Pre")
+    return render(request, "EdTechCat/preschool.html", {'common_tool': common_tool})
 
 class payment(TemplateView):
     template_name = 'payment.html'

@@ -54,7 +54,7 @@
     </div>
     <a href="common">COMMON TOOLS</a>
     <a href="worksheet">WORKSHEETS</a>
-    <a href="about" class="active"> DONATE</a>
+    <a href="about" class="active" style="width:80px; height:20px; margin-top:2px;"> DONATE</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
@@ -72,7 +72,6 @@
                     by giving them the basic need? <br>
                     Well, click below and upload worksheets that you'll have and help educate a child!
                 </p>
-                <a class="link" href="upload" style="font-family: Work Sans">Click here to upload!</a> <br> <br>
             </div>
         </div>
 
@@ -86,7 +85,7 @@
 </div>
 
 <div class="form-group">
-    <form enctype="multipart/form-data" method="POST" class="post-form" >
+    <form enctype="multipart/form-data" method="POST" class="post-form" style="font-family: Roboto , Work Sans">
         {% csrf_token %}
         <table>
             <thead>
@@ -155,8 +154,6 @@
         </div>
 
     </footer>
-
-
 
     <script>
         function myFunction() {

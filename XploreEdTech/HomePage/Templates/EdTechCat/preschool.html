@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+{% load static  %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width,1.0">
+    <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <title>PRE-SCHOOL EdTech Tools</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    .bg-img{
+        background-image: url({% static 'images/common.png' %});
+        background-size: 1450px 750px;
+        line-height :15px;
+        background-color: transparent;
+    }
+</style>
+
+<body class="bg-img">
+
+<div class="header">
+    <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
+    <div class="header-right">
+        {% if user.is_authenticated %}
+            <a class="links" href="profile">Profile</a>
+            <a class="links" href="{%  url 'logout' %}">LogOut</a>
+
+        {% else %}
+            <a class="links" href="accounts" >SignUp</a>
+            <a class="links" href="login">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+<div class="topnav" id="myTopnav">
+    <a href="http://127.0.0.1:8000/">HOME</a>
+    <div class="dropdown">
+        <button class="dropbtn" style="text-decoration: underline">PRE-SCHOOL
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+            <a href="preschool">Maths</a>
+            <a href="science">Science</a>
+            <a href="language">Language</a>
+        </div>
+    </div>
+    <a href="common">COMMON TOOLS</a>
+    <a href="worksheet">WORKSHEETS</a>
+    <a href="about">ABOUT</a>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+</div>
+
+<body>
+
+<div class="row" id="search">
+    <div class="random">
+        <form action="searchtool" method="GET"  target="_blank" >
+            <input name="toolsearch"  type="text" placeholder="Concept... Eg : All ">
+            <button class="search-button">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+<div class="gallery">
+    {% for common in common_tool %}
+        <div class="tile">
+            <div class="posttool">
+                <a href="{{ common.link3 }}"  target="_blank">
+                    <img src="{{ common.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
+                <a href="{{ common.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
+                    <strong> {{ common.tool }}  </strong> </a> <br>
+                <br> <br>
+                GRADES : {{ common.grade_level }} <br>
+                CONCEPT :  {{ common.concept }}
+                <hr>
+                {{ common.desc }} </p>
+                <hr>
+
+                <b> How To Use :</b> <br> <br>
+                <a href="{{ common.link1 }}"  target="_blank"> WATCH VIDEO 1 </a> <br>
+                <a href="{{ common.link2 }}"  target="_blank"> WATCH VIDEO 2</a> <br> <br>
+                <a href="{{ common.guide }}"  target="_blank"> Tool Guide  <br> </a>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</body>
+
+<footer>
+    <div class="content">
+        <div class="left box">
+            <div class="first">
+                <div class="topic">LEARN MORE</div>
+                > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
+                > <a href="donations" style="padding-left:10px; color:white;  text-decoration: none;">  Donations <br> </a>
+            </div>
+        </div>
+
+        <div class="middle">
+            <div class="topic" style="padding-left:20px;">CONNECT WITH US ON</div> <br>
+            <ul>
+                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+
+        <div class="third">
+            <img src="{% static 'images/chatbot (1).png' %}" alt = "chatbot" id="chatbot">
+        </div>
+
+        <div class="bottom" style="height:30px;">
+            All Rights Reserved. Designed and Developed by Rahumath Rumy
+        </div>
+    </div>
+
+</footer>
+</html>

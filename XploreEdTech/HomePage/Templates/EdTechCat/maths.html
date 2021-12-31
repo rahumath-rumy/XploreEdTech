@@ -41,11 +41,10 @@
 <div class="topnav" id="myTopnav">
     <a href="http://127.0.0.1:8000/">HOME</a>
     <div class="dropdown">
-        <button class="dropbtn">SUBJECTS
+        <button class="dropbtn" style="text-decoration: underline">MATHS
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-content">
-            <a href="math" class="active">Maths</a>
             <a href="science">Science</a>
             <a href="preschool">Pre-school</a>
             <a href="language">Language</a>
@@ -60,6 +59,17 @@
 </div>
 
 <body>
+
+<div class="row" id="search">
+    <div class="random">
+        <form action="searchtool" method="GET"  target="_blank" >
+            <input name="toolsearch"  type="text" placeholder="Concept... Eg : All ">
+            <button class="search-button">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+
 <div class="gallery">
     {% for common in common_tool %}
         <div class="tile">
@@ -67,9 +77,9 @@
                 <a href="{{ common.link3 }}"  target="_blank">
                     <img src="{{ common.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
                 <a href="{{ common.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
-                    <strong> {{ common.tool }}  </strong> </a> <br>
-                <p style="text-transform: uppercase; font-weight: 900;"> {{ common.subject }} <br> </p>
-                GRADES : {{ common.grade_level }} <br> <br>
+                    <strong> {{ common.tool }}  </strong> </a> <br> <br>
+{#                <p style="text-transform: uppercase; font-weight: 900;"> {{ common.subject }} <br> </p>#}
+                    GRADES : {{ common.grade_level }} <br>
                 CONCEPT :  {{ common.concept }}
                 <hr>
                 {{ common.desc }} </p>

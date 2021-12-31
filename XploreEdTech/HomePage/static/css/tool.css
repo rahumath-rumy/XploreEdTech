@@ -57,7 +57,7 @@
 
 .gallery .tile{
     display:block;
-    width:100%;
+    width:110%;
     padding:0 0.5em 0.5em 0;
 
 }
@@ -99,7 +99,7 @@
     padding:20px;
     height:500px;
     margin-top:10px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 input {
