@@ -107,6 +107,7 @@
     <div class="content">
         <div class="left box">
             <div class="first">
+                <br>
                 <div class="topic">LEARN MORE</div> <br>
                 > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
                 > <a href="donations" style="padding-left:10px; color:white;  text-decoration: none;">  Donations <br> </a>
@@ -114,6 +115,7 @@
         </div>
 
         <div class="middle">
+            <br>
             <div class="topic" style="padding-left:20px;">CONNECT WITH US ON</div> <br>
             <ul>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -124,7 +126,7 @@
         </div>
 
         <div class="third">
-            <img src="{% static 'images/chatbot (1).png' %}" alt = "chatbot" id="chatbot">
+            <script src="{% static 'scripts/chatbot.js' %}" type="text/javascript" style="padding-bottom: 100px">  </script>
         </div>
 
         <div class="bottom">
@@ -148,24 +150,6 @@
     }
 </script>
 
-
-<script>
-    element = document.getElementById("chatbot");
-
-    element.addEventListener("click", function(e) {
-        e.preventDefault;
-
-        // -> removing the class
-        element.classList.remove("bounce");
-
-        // -> triggering reflow /* The actual magic */
-        // without this it wouldn't work. Try uncommenting the line and the transition won't be retriggered.
-        element.offsetWidth = element.offsetWidth;
-
-        // -> and re-adding the class
-        element.classList.add("bounce");
-    }, false);
-</script>
 
 </body>
 </html>

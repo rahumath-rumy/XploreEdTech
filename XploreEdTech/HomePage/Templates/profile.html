@@ -98,8 +98,8 @@
 
 
 <div class="row">
-<div class="column">
-    <h2 style="text-align: center; color:#2C0C3D"> Edit Profile </h2>
+    <div class="column">
+        <h2 style="text-align: center; color:#2C0C3D"> Edit Profile </h2>
             <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 {% if status %}
@@ -120,43 +120,29 @@
                 <button type="submit" class="updatebtn" > Update Profile</button>
 
             </form>
-</div>
-    <div class="column" style="margin-left:20px;">
-        <h2 style="text-align: center; color:#2C0C3D"> Do You Want To Change Your Password? </h2>
-        <a href ="password_change/" class="updatebtn"
-           style="margin-top:10px; margin-left:160px; width:150px; padding:7px 0 5px 30px;"> CLICK HERE </a>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h2 style="text-align: center; color:#2C0C3D"> Delete Your Account? </h2>
-        <p style="text-align: center"> Deleting your account is permanent. <br>
-            All content from this account will not be recoverable.</p> <br>
-        <a href = "" class="updatebtn"
-           style="margin-top:10px; margin-left:160px; width:150px;
-           padding:7px 0 5px 30px; background-color:red;  border: 3px solid red"> CLICK HERE </a>
+    </div>
+
+        <div class="column" style="margin-left:20px;">
+            <h2 style="text-align: center; color:#2C0C3D"> Do You Want To Change Your Password? </h2>
+            <a href ="password_change/" class="updatebtn"
+            style="margin-top:10px; margin-left:160px; width:150px; padding:7px 0 5px 30px;"> CLICK HERE </a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            <h2 style="text-align: center; color:#2C0C3D"> Delete Your Account? </h2>
+            <p style="text-align: center"> Deleting your account is permanent. <br>
+                All content from this account will not be recoverable.</p> <br>
+            <a href = "" class="updatebtn"
+               style="margin-top:10px; margin-left:160px; width:150px;
+               padding:7px 0 5px 30px; background-color:red;  border: 3px solid red"> CLICK HERE </a>
+        </div>
+    </div>
     </div>
 </div>
-</div>
-    </div>
 </div>
 
 </body>
-{##}
-{#<script>#}
-{#    //using vanilla javascript placholders are entered#}
-{#    const form_fields = document.getElementsByTagName('input')#}
-{#    form_fields[1].placeholder = 'Username';#}
-{#    form_fields[2].placeholder = 'Email';#}
-{#    form_fields[3].placeholder = 'Password';#}
-{#    form_fields[4].placeholder = 'Confirm Password';#}
-{#    form_fields[5].placeholder = 'Confirm Password';#}
-{##}
-{#    for (const field in form_fields){#}
-{#        form_fields[field].className += 'form-control'#}
-{#    }#}
-{##}
-{#</script>#}
 
 </html>

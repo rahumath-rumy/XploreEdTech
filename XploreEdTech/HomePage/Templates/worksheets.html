@@ -10,7 +10,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
-
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,7 +31,6 @@
         {% if user.is_authenticated %}
             <a class="links" href="profile">Profile</a>
             <a class="links" href="{%  url 'logout' %}">LogOut</a>
-
         {% else %}
             <a class="links" href="accounts" >SignUp</a>
             <a class="links" href="login">Login</a>
@@ -64,11 +62,9 @@
 <div class="random">
     <form action="search" method="GET"  target="_blank" >
         <input name="wksearch"  type="text" placeholder="Search worksheet...">
-{#        <input name="wksearch1" type="text">#}
         <button class="search-button">
             <i class="fa fa-search"></i>
         </button>
-{#        <button type ="submit"> SEARCH</button>#}
     </form>
 </div>
 
@@ -95,13 +91,15 @@
     <div class="content">
         <div class="left box">
             <div class="first">
-                <div class="topic">LEARN MORE</div>
+                <br>
+                <div class="topic">LEARN MORE</div> <br>
                 > <a href="about" style="padding-left:10px; color:white;  text-decoration: none;">  About us </a> <br> <br>
                 > <a href="donations" style="padding-left:10px; color:white;  text-decoration: none;">  Donations <br> </a>
             </div>
         </div>
 
         <div class="middle">
+            <br>
             <div class="topic" style="padding-left:20px;">CONNECT WITH US ON</div> <br>
             <ul>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -112,13 +110,14 @@
         </div>
 
         <div class="third">
-            <img src="{% static 'images/chatbot (1).png' %}" alt = "chatbot" id="chatbot">
+            <script src="{% static 'scripts/chatbot.js' %}" type="text/javascript" style="padding-bottom: 100px">  </script>
         </div>
 
-        <div class="bottom" style="height:30px;">
+        <div class="bottom">
             All Rights Reserved. Designed and Developed by Rahumath Rumy
         </div>
     </div>
 
 </footer>
+
 </html>
