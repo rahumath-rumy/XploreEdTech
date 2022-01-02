@@ -1,3 +1,3 @@
-web: gunicorn --chdir XploreEdTech XploreEdTech.wsgi:application --log-file -
-
-
+web: gunicorn --chdir XploreEdTech XploreEdTech.wsgi:application --log-file - --log-level debug
+python manage.py collectstatic --noinput
+manage.py migrate
