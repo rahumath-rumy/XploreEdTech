@@ -186,3 +186,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STRIPE_SECRET_KEY = 'sk_test_51KBZ8iDh2EfAtB9rZqMocpqaL4HCbotnCk2iqpsetRB6sbnnbF8ox68AsDa5vE6KitCAukjW3205rZuQ9vmYePMK001rBFtmCY'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51KBZ8iDh2EfAtB9r0HuIVg4QTPDzK55lLn6UHfqUotDRhg1MfxupB9D14zcLdsWGfxYW7sZUW6RZ5FxssWFmtfMn00r1byJ59m'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
