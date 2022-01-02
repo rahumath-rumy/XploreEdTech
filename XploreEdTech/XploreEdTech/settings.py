@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -152,7 +153,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'HomePage/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, '_staticfiles_')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -187,4 +190,3 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STRIPE_SECRET_KEY = 'sk_test_51KBZ8iDh2EfAtB9rZqMocpqaL4HCbotnCk2iqpsetRB6sbnnbF8ox68AsDa5vE6KitCAukjW3205rZuQ9vmYePMK001rBFtmCY'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51KBZ8iDh2EfAtB9r0HuIVg4QTPDzK55lLn6UHfqUotDRhg1MfxupB9D14zcLdsWGfxYW7sZUW6RZ5FxssWFmtfMn00r1byJ59m'
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
