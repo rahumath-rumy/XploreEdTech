@@ -1,0 +1,147 @@
+.box-element{
+    box-shadow:hsl(0, 0%, 80%) 0 0 16px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
+    margin-top: 10px;
+}
+
+.hidden{
+    display: none!important;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    padding: 0;
+    margin: 0;
+    outline: 1px solid red;
+    margin: 2em auto;
+    border-radius: 100px;
+    border-color:white;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-item {
+    background: #ddd;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+    margin: 1em;
+    flex: 1 1 auto;
+    outline: 1px solid blue;
+    border-radius: 100px;
+    height:100px;
+}
+
+.gallery{
+    display:block;
+    width:100%;
+    margin:0 auto;
+    overflow:hidden;
+    max-width:960px;
+}
+
+.gallery .tile{
+    display:block;
+    width:110%;
+    padding:0 0.5em 0.5em 0;
+
+}
+.gallery .buy{
+    text-decoration: none;
+    padding:5px;
+    color:black;
+    background: #056205;
+    color:white;
+    font-family: Work Sans;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.gallery .tile .post{
+    background: #C4C4C4;
+    border-radius: 30px;
+    color:black;
+    text-align:center;
+    font-family: Roboto, sans-serif;
+    padding:20px;
+    height:300px;
+    margin-top:10px;
+}
+
+.gallery .download{
+    background-color:white;
+    text-decoration: none;
+    padding:5px;
+    color:black;
+}
+.gallery .tile .posttool{
+    background: white;
+    /*border-radius: 30px;*/
+    border: 2px solid black;
+    color:black;
+    text-align:center;
+    font-family: roboto, "Work Sans";
+    padding:20px;
+    height:500px;
+    margin-top:10px;
+    font-size: 14px;
+}
+
+input {
+    color:#2C0C3D;
+    font-family:work sans;
+    margin:10px 0px 0px 500px;
+    padding :10px;
+    width: 250px;
+}
+
+input [type=text]{
+    font-family:work sans;
+    padding-left:20px;
+}
+.search-button{
+    width: 38px;
+    height:38px;
+    background-color: #2C0C3D;
+    border:none;
+    color:white;
+    cursor:pointer;
+ }
+@media screen and (min-width:480px){
+    .gallery .tile{
+        width:50%;
+        float:left;
+    }
+}
+
+@media screen and (min-width:720px){
+    .gallery .tile{
+        width:33.333%;
+        float:left;
+    }
+    .gallery .tile.wide{
+        width:66.667%;
+    }
+}
+
+@media screen and (min-width:960px){
+    .gallery .tile{
+        width:25%;
+        float:left;
+    }
+}
