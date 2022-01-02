@@ -1,1 +1,1 @@
-web: gunicorn XploreEdTech.wsgi --log-file
+web: gunicorn XploreEdTech.wsgi 
