@@ -28,6 +28,7 @@ SECRET_KEY = '+697((6o2i58=u2+5e!mycg)rjiblx@bq1)2^i#igr&c$co4d%'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1','heroku url']
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -151,6 +152,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'HomePage/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, '_staticfiles_')
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
