@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+import dj_database_url
+from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 from Tools.scripts import google
@@ -151,10 +154,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/g
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIR = [os.path.join(BASE_DIR, 'HomePage/static')]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 SITE_ID = 1
@@ -189,4 +191,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 STRIPE_SECRET_KEY = 'sk_test_51KBZ8iDh2EfAtB9rZqMocpqaL4HCbotnCk2iqpsetRB6sbnnbF8ox68AsDa5vE6KitCAukjW3205rZuQ9vmYePMK001rBFtmCY'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51KBZ8iDh2EfAtB9r0HuIVg4QTPDzK55lLn6UHfqUotDRhg1MfxupB9D14zcLdsWGfxYW7sZUW6RZ5FxssWFmtfMn00r1byJ59m'
+
+django_heroku.settings(locals())
 
