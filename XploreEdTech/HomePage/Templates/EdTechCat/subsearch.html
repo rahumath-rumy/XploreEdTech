@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/tool.css' %}">
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
     <link href='https://fonts.googleapis.com/css?family=Work Sans' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -47,40 +48,58 @@
         </button>
         <div class="dropdown-content">
             <a href="math">Maths</a>
-            <a href='science'>Science</a>
-            <a href='language'>Language</a>
-            <a href="preschool">Pre-School</a>
+            <a href="science">Science</a>
+            <a href="language">Language</a>
+            <a href="preschool">Pre-school</a>
         </div>
     </div>
-    <a href="commontools">COMMON TOOLS</a>
-    <a href="worksheet" class="active" style="width:160px; height:40px; margin-top:2px;">WORKSHEETS</a>
+    <a href="common" class="active" style="width:220px; margin-top:2px;">SEARCH RESULTS</a>
+    <a href="worksheet" >WORKSHEETS</a>
     <a href="about" >ABOUT</a>
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
     </a>
 </div>
 
-<h1 class="cet" style="margin: 2px 0 0 0"> SEARCH RESULTS FOR <span style="color: #2C0C3D">{{ request.GET.wksearch }} </span></h1>
+<h1 class="cet" style="margin: 2px 0 0 0"> SEARCH RESULTS FOR <span style="color: #2C0C3D">{{ request.GET.subsearch }} </span></h1>
 
-<div class="gallery">
-    {% for wksheet in data %}
-        <div class="tile">
-            <div class="post">
-                <strong>{{ wksheet.subject }}  </strong> <br> <br>
-                <a class="download" href = "{{ wksheet.filepath.url }}" download="{{ wksheet.filepath.url }}"> Download </a> <br> <br>
-                Concept: {{ wksheet.concept }}  <br>
-                Grade Level :  {{ wksheet.grade_level }} <br>
-                Contributed By : {{ wksheet.name }} <br>
-                School : {{ wksheet.school }} <br>
-                LKR {{ wksheet.price }}  <br> <br>
-                <a class="buy" href="">Buy Now</a> <br>
+<div class="row" id="search">
+    <div class="random">
+        <form action="searchtool" method="GET"  target="_blank" >
+            <input name="toolsearch"  type="text" placeholder="Concept... Eg : All ">
+            <button class="search-button">
+                <i class="fa fa-search"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="gallery">
+        {% for tool in datas %}
+            <div class="tile">
+                <div class="posttool">
+                    <a href="{{ tool.link3 }}"  target="_blank">
+                        <img src="{{ tool.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
+                    <a href="{{ tool.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
+                        <strong> {{ tool.tool }}  </strong> </a> <br>
+                    <br>
+                    GRADES : {{ tool.grade_level }} <br>
+                    CONCEPT :  {{ tool.concept }}
+                    <hr>
+                    {{ tool.desc }} </p>
+                    <hr>
+
+                    <b> How To Use :</b> <br> <br>
+                    <a href="{{ tool.link1 }}"  target="_blank"> WATCH VIDEO 1 </a> <br>
+                    <a href="{{ tool.link2 }}"  target="_blank"> WATCH VIDEO 2</a> <br> <br>
+                    <a href="{{ tool.guide }}"  target="_blank"> Tool Guide  <br> </a>
+                </div>
             </div>
-        </div>
-    {% empty %}
-        <h1 class="cet" style="margin: 2px 0 0 0; font-size: 20px;"> Sorry there are no results, <br>
-            <span style="color: #2C0C3D; margin-top:0px;">Try something else... </span></h1>
-    {% endfor %}
-</div>
+        {% empty %}
+            <h1 class="cet" style="margin: 2px 0 0 0; font-size: 20px;"> Sorry there are no results, <br>
+                <span style="color: #2C0C3D; margin-top:0px;">Try something else... </span></h1>
+
+        {% endfor %}
+    </div>
 </body>
 
 <footer>

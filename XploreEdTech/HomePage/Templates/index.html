@@ -28,7 +28,7 @@
 <p> this is my first python project</p> -->
 
 <div class="header">
-    <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
+    <a href="http://127.0.0.1:8000/"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
 {#        <img src="https://img.icons8.com/fluency/96/000000/book-shelf.png"/> cart#}
         {% if user.is_authenticated %}
@@ -67,8 +67,8 @@
 <div class="container">
     <div class="row" id="search">
         <div class="random">
-            <form action="searchtool" method="GET"  target="_blank" >
-                <input name="toolsearch"  type="text" placeholder="Concept... Eg : All ">
+            <form action="subsearch" method="GET"  target="_blank" >
+                <input name="subsearch"  type="text" placeholder="Type a subject... ">
                 <button class="search-button">
                     <i class="fa fa-search"></i>
                 </button>

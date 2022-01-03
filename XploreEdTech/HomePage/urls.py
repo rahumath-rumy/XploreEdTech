@@ -15,6 +15,7 @@ urlpatterns = [
     path('worksheet', views.worksheet, name="worksheet"),
     path('search', views.wksearch, name="search"),
     path('searchtool', views.toolsearch, name="searchtool"),
+    path('subsearch', views.subsearch, name="subsearch"),
     path('edtechtool', views.ctoolsearch, name="edtechtool"),
     path('common', views.commontools, name="common"),
     path('math', views.mathtool, name="math"),

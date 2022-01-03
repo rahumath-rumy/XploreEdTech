@@ -27,7 +27,7 @@
 <body bgcolor="white">
 
 <div class="header">
-    <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
+    <a href="http://127.0.0.1:8000/"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
         {% if user.is_authenticated %}
             <a class="links" href="profile">Profile</a>
@@ -81,7 +81,7 @@
                     <img src="{{ tool.logo.url }}" alt="EdTech Tool Logo" style="width:55px; height:50px;">  </a>  <br> <br>
                 <a href="{{ tool.link3 }}"  target="_blank" style="text-decoration: none; color:#2C0C3D">
                     <strong> {{ tool.tool }}  </strong> </a> <br>
-                <p style="text-transform: uppercase; font-weight: 900;">{{ tool.subject }} </p>
+               <br>
                 GRADES : {{ tool.grade_level }} <br>
                 CONCEPT :  {{ tool.concept }}
                 <hr>

@@ -68,7 +68,7 @@ def profile(request):
         prof.grade_level = gl
         prof.profession = role
         prof.save()
-        return render(request, "index.html", {"status": "{} Your Profile Has Been Updated"})
+        return render(request, "profile.html", {"status": "Your Profile Has Been Updated"})
 
     return render(request, "profile.html", context)
 
@@ -129,6 +129,11 @@ def wksearch(request):
     wksearch = request.GET['wksearch']
     data = Worksheets.objects.filter(subject__icontains=wksearch).order_by('-worksheetID')
     return render(request, 'search.html', {"data": data})
+
+def subsearch(request):
+    subsearch = request.GET['subsearch']
+    datas = TechTool.objects.filter(subject__icontains=subsearch).order_by('-toolID')
+    return render(request, 'EdTechCat/subsearch.html', {"datas": datas})
 
 def toolsearch(request):
     toolsearch = request.GET['toolsearch']

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name=”viewport” content=”width=device-width,1.0">
     <link rel ="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
-    <title>Donate</title>
+    <title>Upload </title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
 
@@ -26,7 +26,7 @@
 <body bgcolor="white">
 
 <div class="header">
-    <a href="#home"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
+    <a href="http://127.0.0.1:8000/"> <img src = "{% static 'images/XET logo.png' %}" alt = "logo" > </a>
     <div class="header-right">
         {% if user.is_authenticated %}
             <a class="links" href="profile">Profile</a>
