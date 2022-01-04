@@ -11,17 +11,12 @@ class register_table(models.Model):
     profession = models.CharField(max_length=50, null=True, blank=True)
     subjects = models.CharField(max_length=50, null=True, blank=True)
     # email = models.OneToOneField(User, on_delete=models.CASCADE, related_name='Profile')
-    profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
+    # profile_pic = models.ImageField(null=True, blank=True, upload_to="images/profile/")
     added_on = models.DateTimeField(auto_now_add=True, null=True)
     update_on = models.DateTimeField(auto_now=True, null=True)
 
     def __str__(self):
         return self.user.email
-
-
-# class Subjects (models.Model):
-#     subject = models.cCharField(max_length=50, null=True, unique=True)
-
 
 class Worksheets(models.Model):
     worksheetID = models.UUIDField(max_length=10, primary_key=True, default=uuid.uuid4, editable=False)
